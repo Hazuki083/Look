@@ -8,16 +8,16 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-
-   
    
   <body>
-    <header class="navbar navbar-expand-lg navbar-light bg-light" >
-      <div class="container-fluid" >
-        <a class="navbar-brand" href="#">Look</a>
-      </div>
-    </header>    
+    
+   <!--<#%= render 'layouts/header' %>-->
+   <div class="wrapper">
+
+    <main>
     <%= yield %>
+    </main>
+    <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,42 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FFF;">
+    <div class="container">
+      <a class="navbar-brand" href="/">Look<%= image_tag 'icon.human_032.png', size: '200x80' %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          
+<!--カスタマーログイン後-->
+       <% if customer_signed_in? %>
+          <li class="nav-item"><%= link_to "マイページ", customers_path,class:'nav-link btn btn-outline-danger'%></li>
+          <li class="nav-item  pl-4"><%= link_to "投稿", posts_path,class:'nav-link btn btn-outline-danger'%></li>
+          <li class="nav-item pl-4"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:'nav-link btn btn-outline-danger'%></li>
+          <li><div class="input-group pl-4">
+          </div></li>
+
+<!--管理者ログイン後-->
+        <% elsif admin_admin_signed_in? %>
+        <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class:'nav-link btn btn-outline-danger'%></li>
+        <li class="nav-item pl-4"><%= link_to "カテゴリー一覧", admin_categories_path, class:'nav-link btn btn-outline-danger'%></li>
+         <li class="nav-item pl-4"><%= link_to "サブカテゴリー一覧", admin_sub_categories_path, class:'nav-link btn btn-outline-danger'%></li>
+        <li class="nav-item pl-4"><%= link_to "ログアウト", destroy_admin_admin_session_path, method: :delete, class:'nav-link btn btn-outline-danger'%></li>
+        <li><div class="input-group pl-4">
+
+
+          </div></li>
+          
+<!--ログインしてない-->
+        <% else %>
+          <li class="nav-item pl-4"><%= link_to "新規登録", new_customer_registration_path,class:'nav-link btn btn-outline-danger'%></li>
+          <li class="nav-item pl-4"><%= link_to "ログイン", new_customer_session_path,class:'nav-link btn btn-outline-danger'%></li>
+          <li><div class="input-group pl-4">
+    
+          </div></li>
+        <% end %>
+       </ul>
+      </div>
+    </div>
+  </nav>
+</header>

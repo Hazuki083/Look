@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'homes/top' => 'homes#top'
     resources :categories, only: [:index, :create, :edit, :update]
     resources :sub_categories, only: [:index, :create, :edit, :update]
+    resources :items
   end
 
   devise_for :customers, controllers: {

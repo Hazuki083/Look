@@ -6,13 +6,13 @@
    </div>
    <!--urlにはしたいアクションのpathを記述-->
    <%= form_with model:@category, url:admin_category_path(@category), local:true do |f| %>
-    <div class="row">
+     <div class="row">
        <div class="col-md-1"></div>
        <div class="col-md-1">カテゴリー</div>
        <div class="col-2"><%= f.text_field :name  %></div>
        <div class="actions">
            <%= f.submit "変更を保存", :class => "btn btn-outline-secondary btn-block" %>
        </div>
-    </div>
+     </div>
    <% end %>
 </div>
