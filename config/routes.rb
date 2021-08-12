@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-
+=begin
+  namespace :admin do
+    get 'items/new'
+    get 'items/show'
+    get 'items/edit'
+    get 'items/create'
+    get 'items/update'
+  end
+=end
   devise_for :admins, controllers: {
     registrations: "admin/admins/registrations",
     passwords: "admin/admins/passwords",
@@ -11,7 +19,7 @@ Rails.application.routes.draw do
     get 'homes/top' => 'homes#top'
     resources :categories, only: [:index, :create, :edit, :update]
     resources :sub_categories, only: [:index, :create, :edit, :update]
-    resources :items
+    resources :items, only: [:new, :show, :edit, :create, :update]
   end
 
   devise_for :customers, controllers: {
