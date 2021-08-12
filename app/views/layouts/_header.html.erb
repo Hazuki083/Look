@@ -10,7 +10,12 @@
 
 <!--カスタマーログイン後-->
         <% if customer_signed_in? %>
-          <li class="nav-item"><%= link_to image_tag "user.jpeg", customer_path,class:'nav-link btn btn-outline-danger'%></li>
+          <li class="nav-item">
+            <%= link_to customer_path(current_customer.id) do %>
+            <%= attachment_image_tag current_customer, :image_id, :fill, 50, 50,fallback: "no.jpg" %>
+
+            <% end %>
+          </li>
           <li class="nav-item pl-4"><%= link_to "投稿", new_post_path,class:'nav-link btn btn-outline-warning'%></li>
           <li class="nav-item pl-4"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:'nav-link btn btn-outline-warning'%></li>
           <li><div class="input-group pl-4"></div></li>

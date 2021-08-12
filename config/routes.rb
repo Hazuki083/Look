@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
-=begin
-  namespace :admin do
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/create'
-    get 'items/update'
-  end
-=end
+
   devise_for :admins, controllers: {
     registrations: "admin/admins/registrations",
     passwords: "admin/admins/passwords",
@@ -32,7 +24,7 @@ Rails.application.routes.draw do
 # module URL:変えたくない　ファイル構成：指定のパスにしたい
  scope module: :customer do
   root "items#top"
-  resources :castomers, only: [:index, :show, :edit, :update]
+  resources :customers, only: [:index, :show, :edit, :update]
   resources :items, only: [:index, :show]
   resources :posts
  end

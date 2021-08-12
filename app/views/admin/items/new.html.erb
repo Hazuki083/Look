@@ -4,7 +4,7 @@
       <h3 style="background-color: #eeeeee;">商品新規登録</h3>
     </div>
   </div>
-  
+
     <div class="row">
       <div class="col-md-8 ml-md-auto">
         <%= form_with model: @item, url: admin_items_path, method: :post, local:true do |f| %>
@@ -17,7 +17,7 @@
               </div>
             </td>
           </tr>
-          
+
           <tr>
             <th><%= f.label :"商品名", class: "mr-5" %></th>
             <td>
@@ -26,7 +26,7 @@
               </div>
             </td>
           </tr>
-              
+
           <tr>
             <th><%= f.label :"商品説明", class: "mr-5" %></th>
             <td>
@@ -35,7 +35,7 @@
               </div>
             </td>
           </tr>
-          
+
           <tr>
             <th><%= f.label :"カテゴリー", class: "mr-5" %></th>
             <td>
@@ -44,7 +44,7 @@
               </div>
             </td>
           </tr>
-          
+
            <tr>
             <th><%= f.label :"サブカテゴリー", class: "mr-5" %></th>
             <td>
@@ -53,7 +53,7 @@
               </div>
             </td>
           </tr>
-          
+
           <tr>
             <th><%= f.label :"参考価格", class: "mr-5" %></th>
             <td>
@@ -62,7 +62,7 @@
               </div>
             </td>
           </tr>
-                        
+
           <tr>
             <th></th>
               <td>
