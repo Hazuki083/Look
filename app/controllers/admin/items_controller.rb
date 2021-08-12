@@ -1,8 +1,9 @@
 class Admin::ItemsController < ApplicationController
-  
+
   def new
     @item = Item.new
     @categories = Category.all
+    @sub_categories = SubCategory.all
   end
 
   def show
@@ -12,6 +13,7 @@ class Admin::ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @categories = Category.all
+    @sub_categories = SubCategory.all
   end
 
   def create
@@ -21,6 +23,7 @@ class Admin::ItemsController < ApplicationController
      redirect_to admin_item_path(@item.id)
     else
       @categories = Category.all
+      @sub_categories = SubCategory.all
       render :new
     end
   end
@@ -32,13 +35,14 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_item_path(@item.id)
    else
      @categories = Category.all
+     @sub_categories = SubCategory.all
      render :edit
    end
   end
 
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :image_id, :price, :category_id)
+    params.require(:item).permit(:name, :introduction, :image_id, :price, :category_id, :sub_category_id)
   end
 
 

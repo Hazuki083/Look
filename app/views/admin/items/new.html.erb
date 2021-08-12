@@ -1,2 +1,79 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 text-center" style="margin: 15px 0 15px 0;">
+      <h3 style="background-color: #eeeeee;">商品新規登録</h3>
+    </div>
+  </div>
+  
+    <div class="row">
+      <div class="col-md-8 ml-md-auto">
+        <%= form_with model: @item, url: admin_items_path, method: :post, local:true do |f| %>
+        <table>
+          <tr>
+            <th><%= f.label :"商品画像", class: "mr-5" %></th>
+            <td>
+              <div class="form-group">
+                <%= f.attachment_field :image, class: "image" %>
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <th><%= f.label :"商品名", class: "mr-5" %></th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :name, class: "form-control" %>
+              </div>
+            </td>
+          </tr>
+              
+          <tr>
+            <th><%= f.label :"商品説明", class: "mr-5" %></th>
+            <td>
+              <div class="form-group">
+                <%= f.text_area :introduction, class: "form-control", :size=>"40x6" %>
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <th><%= f.label :"カテゴリー", class: "mr-5" %></th>
+            <td>
+              <div class="form-group">
+                <%= f.collection_select :category_id, @categories, :id, :name, {prompt: "選択してください"}%>
+              </div>
+            </td>
+          </tr>
+          
+           <tr>
+            <th><%= f.label :"サブカテゴリー", class: "mr-5" %></th>
+            <td>
+              <div class="form-group">
+                <%= f.collection_select :sub_category_id, @sub_categories, :id, :name, {prompt: "選択してください"}%>
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <th><%= f.label :"参考価格", class: "mr-5" %></th>
+            <td>
+              <div class="form-group form-inline">
+                <%= f.text_field :price, class: "form-control" %>円
+              </div>
+            </td>
+          </tr>
+                        
+          <tr>
+            <th></th>
+              <td>
+                <div class="actions">
+                  <%= f.submit "新規登録", :class => "btn btn-outline-secondary btn-block" %>
+                </div>
+              </td>
+          </tr>
+        </table>
+          <% end %>
+      </div>
+    </div>
+</div>
+

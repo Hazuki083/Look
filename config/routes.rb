@@ -31,7 +31,10 @@ Rails.application.routes.draw do
 # scope URL:指定のパスにしたい　ファイル構成：変えたくない
 # module URL:変えたくない　ファイル構成：指定のパスにしたい
  scope module: :customer do
-   root "items#top"
+  root "items#top"
+  resources :castomers, only: [:index, :show, :edit, :update]
+  resources :items, only: [:index, :show]
+  resources :posts
  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
