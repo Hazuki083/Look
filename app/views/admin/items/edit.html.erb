@@ -4,18 +4,18 @@
       <h5 style="background-color: #eeeeee;">商品編集</h5>
     </div>
   </div>
-  
+
   <%= form_with model: @item, url: admin_item_path(@item), local: true do |f| %>
-    
+
     <div class="row" style="font-size: 13px; margin-top: 10px;">
       <div class="col-md-3 text-center">
         <p>商品画像</p>
       </div>
       <div class="col-md-1 text-center">
-        <%= f.attachment_field :image, placeholder: "ファイルを選択" %>
+        <%= f.attachment_field :image_id, placeholder: "ファイルを選択" %>
       </div>
     </div>
-    
+
     <div class="row" style="font-size: 13px; margin-top: 10px;">
       <div class="col-md-3 text-center">
         <p>商品名</p>
@@ -24,7 +24,7 @@
         <%= f.text_field :name, placeholder: "商品名", size: 30 %>
       </div>
     </div>
-    
+
     <div class="row" style="font-size: 13px; margin-top: 10px;">
       <div class="col-md-3 text-center">
         <p>商品説明</p>
@@ -33,7 +33,7 @@
         <%= f.text_area :introduction, placeholder: "ここに説明を記述します", size: "30x6" %>
       </div>
     </div>
-    
+
     <div class="row" style="font-size: 13px; margin-top: 10px;">
       <div class="col-md-3 text-center">
         <p>カテゴリー</p>
@@ -42,7 +42,7 @@
         <%= f.collection_select(:category_id, @categories, :id, :name, {prompt: "選択してください"})%>
       </div>
     </div>
-    
+
     <div class="row" style="font-size: 13px; margin-top: 10px;">
       <div class="col-md-3 text-center">
         <p>サブカテゴリー</p>
@@ -51,17 +51,17 @@
         <%= f.collection_select(:sub_category_id, @sub_categories, :id, :name, {prompt: "選択してください"})%>
       </div>
     </div>
-    
+
     <div class="row" style="font-size: 13px; margin-top: 10px;">
       <div class="col-md-3 text-center">
         <p>参考価格</p>
       </div>
       <div class="col-md-1 text-center">
-        <%= f.text_field :price, placeholder: "1000", size: 30 %> 
+        <%= f.text_field :price, placeholder: "1000", size: 30 %>
         <!--placeholderであらかじめテキストを表示-->
       </div>
     </div>
-    
+
     <div class="row" style="font-size: 13px; margin-top: 10px;">
       <div class="col-md-3 text-left"></div>
       <div class="col-md-2 text-right">
