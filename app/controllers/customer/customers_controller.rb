@@ -7,19 +7,16 @@ class Customer::CustomersController < ApplicationController
   def show
     @customer = Customer.find(current_customer.id)
   end
-  
+
   def quit
     @customer = Customer.find(current_customer.id)
-  end
-  
-  def out
   end
 
 
   def edit
     @customer = Customer.find(current_customer.id)
     if @customer != current_customer
-       redirect_to customer_path(current_customer.id)
+       redirect_to customers_path(current_customer.id)
     end
   end
 
@@ -27,14 +24,14 @@ class Customer::CustomersController < ApplicationController
     @customer = Customer.find(current_customer.id)
     if @customer.update(customer_params)
        flash[:notice] = "You have updated user successfully."
-       redirect_to user_path(@user.id)
+       redirect_to customers_path(@customer.id)
     else
-       render :edit
+       render :"customers/edit"
     end
   end
-  
+
   private
-  
+
   def customer_params
     params.require(:customer).permit(:name, :age, :skin, :email, :image_id)
   end
