@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :customers, only: [:index, :show, :edit, :update]
   resources :items, only: [:index, :show]
   resources :posts
-  
+  resources :categories, only: [:index]
  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
