@@ -1,1 +1,47 @@
-<h1>商品詳細</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-mt-30 text-left">
+      <th><%= attachment_image_tag @item, :image_id, :fill, 10, 10,fallback: "no.jpg" %></th>
+    </div>
+
+    <div class="col-md-6 text-right">
+      <div class="row" style="line-hight: 40px;">
+        <div class="col-md-12" style="font-size: 25px;">
+          <h3><strong><%= @item.name %></strong></h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 text-right">
+      <div class="row" style="line-hight: 40px;">
+        <div class="col-md-12" style="font-size: 25px;">
+          <h3><strong><%= @item.category.name %></strong></h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 text-right">
+      <div class="row" style="line-hight: 40px;">
+        <div class="col-md-12" style="font-size: 25px;">
+          <h3><strong><%= @item.sub_category.name %></strong></h3>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 text-right">
+      <div class="row" style="line-hight: 40px;">
+        <div class="col-md-12" style="font-size: 25px;">
+          <h3><strong><%= @item.price %></strong></h3>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row" style="margin-bottom: 120px;">
+      <div class="col-md-12">
+        <%= @item.introduction %>
+      </div>
+    </div>
+     <%= link_to "レビューの一覧はこちら", posts_path, class: "btn btn-outline-secondary btn-block" %>
+ </div>
+</div>
