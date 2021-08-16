@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FFF;">
     <div class="container">
-      <a class="navbar-brand" href="/"><%= image_tag 'Look.jpeg', size: '180x70' %></a>
+      <a class="navbar-brand" href="/"><%= image_tag 'Look.jpg', size: '180x70' %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -12,10 +12,9 @@
         <% if customer_signed_in? %>
           <li class="nav-item">
             <%= link_to customer_path(current_customer.id) do %>
-            <%= attachment_image_tag current_customer, :image_id, fallback: "user2.jpeg" %>
+            <%= attachment_image_tag current_customer, :image_id, fallback: "user2.jpg" %>
             <% end %>
           </li>
-          <li class="nav-item pl-4"><%= link_to "投稿", new_post_path,class:'nav-link btn btn-outline-warning'%></li>
           <li class="nav-item pl-4"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:'nav-link btn btn-outline-warning'%></li>
           <li><div class="input-group pl-4"></div></li>
 
