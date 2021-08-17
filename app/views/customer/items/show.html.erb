@@ -42,14 +42,14 @@
         <%= @item.introduction %>
       </div>
     </div>
-     <%= link_to "投稿する", new_item_post_path(current_customer), class:'nav-link btn btn-outline-warning'%>
+     <%= link_to "投稿する", new_item_post_path(@item), class:'nav-link btn btn-outline-warning'%>
 
      <div class="review">
        <h1>レビューの一覧</h1>
        <p>レビュー件数：<%= @item.posts.count %></p>
-       
+
        <% @item.posts.each do |post| %>
-       
+
        <p><%= image_tag('user1.jpg') %></p>
        <%= post.customer.name %>
        <%= post.created_at.strftime('%Y/%m/%d') %><%= post.review %>

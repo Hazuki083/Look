@@ -3,7 +3,7 @@
     <div class="col-xs-12">
       <h2 class="head-line title_h2 text-center">マイページ編集</h2>
 
-      <%= form_with model:@customer, url:customers_path, local: true ,method: :put do |f| %>
+      <%= form_with model:@customer, url:customer_path, local: true ,method: :put do |f| %>
 
       <div class="col-xs-10">
         <div class="form-group col-xs-12">
@@ -17,7 +17,7 @@
         </div>
 
         <div class="form-group col-xs-12">
-          <%= f.label :"肌質", class: "col-sm-5 control-label" %>
+          <%= f.label :"年代", class: "col-sm-5 control-label" %>
           <%= f.select :age, [["10代","10代"],["20代","20代"],["30代","30代"],["40代", "40代"],["50代", "50代"],["非公開","非公開"]],class: "col-sm-4 form-control-static" %>
         </div>
 

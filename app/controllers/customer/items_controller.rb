@@ -1,6 +1,5 @@
 class Customer::ItemsController < ApplicationController
- before_action :authenticate_customer!
-
+ 
  def top
  end
 
@@ -12,6 +11,8 @@ class Customer::ItemsController < ApplicationController
  def show
   @item = Item.find(params[:id])
   @post = Post.new
+  @posts = @item.posts.includes(:customer)
+  
  end
  
  private

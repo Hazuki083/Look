@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Customer::Customers::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -59,4 +60,9 @@ class Customer::Customers::RegistrationsController < Devise::RegistrationsContro
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name]) 
+    # 新規登録時(sign_up)にnameというキーのパラメーターを追加で許可する
+  end
 end

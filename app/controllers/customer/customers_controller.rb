@@ -2,6 +2,7 @@ class Customer::CustomersController < ApplicationController
    before_action :authenticate_customer!
 
   def show
+
     @customer = Customer.find(current_customer.id)
   end
 
@@ -16,8 +17,8 @@ class Customer::CustomersController < ApplicationController
   def update
     @customer = Customer.find(current_customer.id)
     if @customer.update(customer_params)
-       flash[:notice] = "You have updated user successfully."
-       redirect_to customers_path(@customer.id)
+       flash[:notice] = "マイページが更新されました"
+       redirect_to customer_path
     else
        render :edit
     end
@@ -26,6 +27,6 @@ class Customer::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :age, :skin, :email, :image_id)
+    params.require(:customer).permit(:name, :age, :skin, :email, :image)
   end
 end

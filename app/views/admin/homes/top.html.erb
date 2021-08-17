@@ -25,7 +25,8 @@
         <tr>
           <th><%= attachment_image_tag item, :image_id, :fill, 50, 50,fallback: "no.jpg" %></th>
           <td><%= link_to item.name, admin_item_path(item.id), class: "text-dark" %></td>
-          <td><%= item.price %></td>
+          <td><%= item.price.to_s(:delimited) %>円</td>
+          <!--to_s(:delimited)で数字を-->
         </tr>
      <% end %>
      <!--kaminari記述-->

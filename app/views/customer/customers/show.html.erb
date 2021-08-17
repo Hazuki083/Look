@@ -7,7 +7,7 @@
 				<tbody>
 					<tr>
 						<td class="info col-xs-2">名前</td>
-						<td class="text-left"><%= @customer.name %></td>
+						<td class="text-left"><%= @customer.name %>さん</td>
 					</tr>
 					<tr>
 						<td class="info">年代</td>
@@ -20,11 +20,12 @@
 					<tr>
 						<td class="info">メールアドレス</td>
 						<td class="text-left"><%= @customer.email %></td>
-						
-						<p><strong class="information-link"><i class="far fa-user"></i>登録情報</strong>&emsp;
-			<%= link_to " 編集する", edit_customer_path, class: "glyphicon glyphicon-pencil btn btn-success" %></p>
+	
+						<%= link_to " 編集する", edit_customer_path, class: "glyphicon glyphicon-pencil btn btn-success" %></p>
 
 					</tr>
+					
+					<%= render 'customer/customers/user', customer: @customer%>
 				</tbody>
 			</table>
 		</div>
