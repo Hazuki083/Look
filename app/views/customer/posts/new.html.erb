@@ -1,1 +1,17 @@
-<h1>投稿フォーム</h1>
+<div class="container">
+  <div class="row">
+    <h1>レビュー投稿</h1>
+
+    <%= form_with model: @post, local:true do |f| %>
+    
+          <div class="form-group">
+          <%= f.label :image, "画像を追加" %>
+          <%= f.attachment_field :image %>
+
+          <div class="form-group">
+          <%= f.label :review, "レビュー" %>
+          <%= f.text_field :review %>
+          </div>
+
+          <%= f.submit "投稿", class:"btn btn-secondary" %>
+          <% end %>

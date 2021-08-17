@@ -4,7 +4,8 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
- attachment :image
- 
-  has_many :posts
+  attachment :image
+  
+  has_many :item, dependent: :destroy
+  has_many :posts,  dependent: :destroy
 end

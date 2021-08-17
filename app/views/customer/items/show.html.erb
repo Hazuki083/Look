@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="col-md-6 text-right">
       <div class="row" style="line-hight: 40px;">
         <div class="col-md-12" style="font-size: 25px;">
@@ -42,6 +42,23 @@
         <%= @item.introduction %>
       </div>
     </div>
-     <%= link_to "レビューの一覧はこちら", posts_path, class: "btn btn-outline-secondary btn-block" %>
- </div>
-</div>
+     <%= link_to "投稿する", new_item_post_path(current_customer), class:'nav-link btn btn-outline-warning'%>
+
+     <div class="review">
+       <h1>レビューの一覧</h1>
+       <p>レビュー件数：<%= @item.posts.count %></p>
+       
+       <% @item.posts.each do |post| %>
+       
+       <p><%= image_tag('user1.jpg') %></p>
+       <%= post.customer.name %>
+       <%= post.created_at.strftime('%Y/%m/%d') %><%= post.review %>
+
+       <% if post.customer == current_customer %>
+       <div class="post-delete">
+    <%= link_to "削除", item_post_path(post.item, post), method: :delete %>
+  </div>
+     <% end %>
+     <% end %>
+  </div>
+     <!--<#%= link_to "レビューの一覧はこちら", new_item_post_path, class: "btn btn-outline-secondary btn-block" %>-->

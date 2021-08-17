@@ -1,6 +1,6 @@
 class Admin::SubCategoriesController < ApplicationController
   
-   def index
+  def index
     @sub_categories = SubCategory.all
     @sub_category = SubCategory.new
   end
@@ -9,6 +9,9 @@ class Admin::SubCategoriesController < ApplicationController
     @sub_category = SubCategory.new(sub_category_params)
     if @sub_category.save
       redirect_to admin_sub_categories_path
+    else
+      @sub_categories = SubCategory.all
+      render :index
     end
   end
   
