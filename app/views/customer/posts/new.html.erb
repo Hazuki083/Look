@@ -13,21 +13,21 @@
             <%= f.label :review, "レビュー" %>
             <%= f.text_field :review %>
           </div>
-
+          
+          <!--評価機能はjavascript-->
           <div id="rating-form">
             <label>評価：</label>
-            <%= f.hidden_field :rate, :value => 'score' %>
+            <%= f.hidden_field :rate, id: :review_star %>
+            <!--rateを使うときはhiddenを使う決まり-->
+            <script>
+             $('#rating-form').raty({
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                scoreName: 'post[rate]'   // 登録するモデル名［カラム名］
+             });
+            </script>
           </div>
-
           <%= f.submit "投稿", class:"btn btn-secondary" %>
-          <% end %>
-
-    <script>
-      $('#rating-form').raty({
-        starOn: "<%= asset_path('star-on.jpg') %>",
-        starOff: "<%= asset_path('star-off.jpg') %>",
-        scoreName: 'post[rate]'   // 登録するモデル名［カラム名］
-      });
-    </script>
+        <% end %>
   </div>
 </div>
