@@ -7,8 +7,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :item_id
       t.integer :image_id
       t.text :review
-      t.string :value
-
+      t.integer :rate
       t.timestamps
     end
   end

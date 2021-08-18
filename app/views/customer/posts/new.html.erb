@@ -5,16 +5,29 @@
     <%#= form_with (model:[@item,@post], local: true) do |f| %>
     <%= form_with(model: [@item, @post], local: true) do |f| %>
           <div class="form-group">
-          <%= f.label :image, "画像を追加" %>
-          <%= f.attachment_field :image %>
+            <%= f.label :image, "画像を追加" %>
+            <%= f.attachment_field :image %>
           </div>
 
           <div class="form-group">
-          <%= f.label :review, "レビュー" %>
-          <%= f.text_field :review %>
+            <%= f.label :review, "レビュー" %>
+            <%= f.text_field :review %>
+          </div>
+
+          <div id="rating-form">
+            <label>評価：</label>
+            <%= f.hidden_field :rate, :value => 'score' %>
           </div>
 
           <%= f.submit "投稿", class:"btn btn-secondary" %>
           <% end %>
+
+    <script>
+      $('#rating-form').raty({
+        starOn: "<%= asset_path('star-on.jpg') %>",
+        starOff: "<%= asset_path('star-off.jpg') %>",
+        scoreName: 'post[rate]'   // 登録するモデル名［カラム名］
+      });
+    </script>
   </div>
 </div>

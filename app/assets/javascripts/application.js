@@ -11,6 +11,7 @@
 // about supported directives.
 //
 
+//= require jquary
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
@@ -19,3 +20,4 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery.raty.js

@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_08_12_102115) do
     t.integer "item_id"
     t.integer "image_id"
     t.text "review"
-    t.string "value"
+    t.integer "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

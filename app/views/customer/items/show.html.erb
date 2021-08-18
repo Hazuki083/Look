@@ -1,48 +1,71 @@
 <div class="container">
+  <div class="col-md-2 text-center" style="margin: 15px 0 15px 0;">
+    <h5 style="background-color: #eeeeee;">商品詳細</h5>
+  </div>
+  
   <div class="row">
-    <div class="col-mt-30 text-left">
-      <th><%= attachment_image_tag @item, :image_id, :fill, 10, 10,fallback: "no.jpg" %></th>
-    </div>
-
-    <div class="col-md-6 text-right">
-      <div class="row" style="line-hight: 40px;">
-        <div class="col-md-12" style="font-size: 25px;">
-          <h3><strong><%= @item.name %></strong></h3>
-        </div>
+    <div class="col-md-5  text-left" style="margin: 30px 0 35px 0;">
+      <div class="post-body">
+        <th><%= attachment_image_tag @item, :image_id, :fill, 10, 10, fallback: "no.jpg" %></th>
       </div>
     </div>
-
-    <div class="col-md-6 text-right">
-      <div class="row" style="line-hight: 40px;">
-        <div class="col-md-12" style="font-size: 25px;">
-          <h3><strong><%= @item.category.name %></strong></h3>
-        </div>
+  </div>
+  
+    <div class="col-md-6">
+    <div class="row" style="margin: 30px 0 35px 0;">
+      <div class="col-md-4 text-right">
+        <p>商品名</p>
+      </div>
+      <div class="col-md-8 text-right">
+        <%= @item.name %>
       </div>
     </div>
-
-    <div class="col-md-6 text-right">
-      <div class="row" style="line-hight: 40px;">
-        <div class="col-md-12" style="font-size: 25px;">
-          <h3><strong><%= @item.sub_category.name %></strong></h3>
-        </div>
+    <div class="row" style="margin: 30px 0 35px 0;">
+      <div class="col-md-4 text-left">
+        <p>商品説明</p>
       </div>
-    </div>
-
-    <div class="col-md-6 text-right">
-      <div class="row" style="line-hight: 40px;">
-        <div class="col-md-12" style="font-size: 25px;">
-          <h3><strong><%= @item.price %></strong></h3>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row" style="margin-bottom: 120px;">
-      <div class="col-md-12">
+      <div class="col-md-8 text-left">
         <%= @item.introduction %>
       </div>
     </div>
-     <%= link_to "投稿する", new_item_post_path(@item), class:'nav-link btn btn-outline-warning'%>
+    <div class="row" style="margin: 30px 0 35px 0;">
+      <div class="col-md-4 text-left">
+        <p>カテゴリー</p>
+      </div>
+      <div class="col-md-8 text-left">
+        <%= @item.category.name %>
+      </div>
+    </div>
+    <div class="row" style="margin: 30px 0 35px 0;">
+      <div class="col-md-4 text-left">
+        <p>サブカテゴリー</p>
+      </div>
+      <div class="col-md-8 text-left">
+        <%= @item.sub_category.name %>
+      </div>
+    </div>
+    <div class="row" style="margin: 30px 0 35px 0;">
+      <div class="col-md-4 text-left">
+        <p>参考価格</p>
+      </div>
+      <div class="col-md-8 text-left">
+        <%= @item.price.to_s(:delimited) %>円
+        <br>
+      </div>
+    </div>
+    <div class="row" style="font-size: 13px; margin-top: 10px;">
+      <div class="col-md-3 text-center">
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="actions">
+          <%= link_to "投稿する", new_item_post_path(@item), class:'nav-link btn btn-outline-warning'%>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
 
      <div class="review">
        <h1>レビューの一覧</h1>
@@ -50,15 +73,26 @@
 
        <% @item.posts.each do |post| %>
 
-       <p><%= image_tag('user1.jpg') %></p>
+       <%= attachment_image_tag @customer, :image, :fill, 100, 100, format: 'jpg', fallback: "user2.jpg" %>
        <%= post.customer.name %>
        <%= post.created_at.strftime('%Y/%m/%d') %><%= post.review %>
-
+      <script>
+        $('.post-rate').raty({
+          readOnly: true,
+          score: function() {
+          return $(this).attr('data-score');
+         },
+         path: '/assets/'
+         });
+     </script>
+     
        <% if post.customer == current_customer %>
        <div class="post-delete">
-    <%= link_to "削除", item_post_path(post.item, post), method: :delete %>
-  </div>
+        <%= link_to "削除", item_post_path(post.item, post), method: :delete %>
+     </div>
      <% end %>
      <% end %>
+     
+    </div>
   </div>
-     <!--<#%= link_to "レビューの一覧はこちら", new_item_post_path, class: "btn btn-outline-secondary btn-block" %>-->
+</div>

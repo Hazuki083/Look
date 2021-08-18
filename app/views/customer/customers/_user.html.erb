@@ -1,22 +1,21 @@
 <table class="table table-user">
     <thead>
       <tr>
-        <%= attachment_image_tag customer, :image, :fill, 100, 100, format: 'jpg', fallback: "user2.jpg" %>
+        <%= attachment_image_tag customer, :image, :fill, 100, 100, format: 'jpg', fallback: "user2.jpg", class: "rounded-circle" %>
       </tr>
     </thead>
-
-        <tbody>
-          <tr>
-            <th>フォロー</th>
-            <th></th>
-          </tr>
-          <tr>
-            <th>フォロワー</th>
-            <th></th>
-          </tr>
-          <tr>
-          <th>いいね</th>
-          <th></th>
-          </tr>
-        </tbody>
+    <tbody>
+      <tr>
+        <th>フォロー</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>フォロワー</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>いいね</th>
+        <th></th>
+      </tr>
+    </tbody>
   </table>

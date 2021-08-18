@@ -2,7 +2,6 @@ class Customer::PostsController < ApplicationController
   before_action :authenticate_customer!
 
   def new
-    # binding.pry
     @item = Item.find(params[:item_id])
     @post = Post.new
     # binding.pry
@@ -10,7 +9,7 @@ class Customer::PostsController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @post = current_customer.post.new(post_params)
+    @post = current_customer.posts.new(post_params)
     @post.item_id = @item.id
     @customer = @item.customer
     if @post.save
@@ -29,7 +28,7 @@ class Customer::PostsController < ApplicationController
   private
 
   def post_params
-  params.require(:post).permit(:review, :image)
+  params.require(:post).permit(:review, :image, :rate)
   end
 
 end
