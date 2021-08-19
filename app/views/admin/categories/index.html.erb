@@ -1,38 +1,37 @@
 <div class="contener">
   <div class="row">
-    <div class="col-md-3" style="margin: 30px 0 30px 0;">
-      <h3 style="background-color: #eeeeee;">カテゴリー</h3>
+     <div class="col-md-6 text-center" style="margin: 15px 0 15px 0;">
+      <h3>カテゴリー</h3>
     </div>
   </div>
-   <!--カテゴリー追加フォーム-->
-    <%= form_with url:admin_categories_path, model:@category, local:true do |f| %>
+  <%= form_with url:admin_categories_path, model:@category, local:true do |f| %>
     <!--rowにform入れると縦に並ぶ-->
-    <div class="row" style="margin: 20px 0 35px 0;">
+    <div class="row" style="margin: 20px 0 30px 0;">
       <div class="col-md-2 text-center">
         <h6>カテゴリー名</h6>
       </div>
-     <div class="col-md-4">
-     <%= f.text_field :name, :size=>"30×5" %>
-     </div>
-     <div class="col-md-3">
-     <%= f.submit "新規登録", :class => "btn btn-outline-secondary btn-block" %>
-     </div>
-    <% end %>
-   </div>
+      <div class="col-md-4">
+       <%= f.text_field :name, :size=>"30×5" %>
+      </div>
+      <div class="col-md-3">
+       <%= f.submit "新規登録", :class => "btn btn-outline-secondary btn-block" %>
+      </div>
+       <% end %>
+    </div>
    <!--カテゴリの一覧-->
-   <div class="row">
-   <div class="col-lg-4">
-    <table class="table border-dark">
-          <div class="text-center" style="padding-top: 20px; height: 55px; background-color: #eeeeee;">カテゴリー</div>
-     <tbody>
-      <% @categories.each do |category| %>
-       <tr>
-        <td class="category_name"><%= link_to category.name %></td>
-        <td><%= link_to "編集する", edit_admin_category_path(category), :class => "btn btn-outline-secondary btn-block" %></td>
-       </tr>
-      <% end %>
-     </tbody>
-    </table>
-   </div>
+    <div class="row">
+     <div class="col-lg-4">
+      <table class="table border-dark">
+       <div class="text-center" style="padding-top: 20px; height: 55px; background-color: #eeeeee;">カテゴリー</div>
+        <tbody>
+         <% @categories.each do |category| %>
+         <tr>
+          <td class="category_name"><%= link_to category.name %></td>
+          <td><%= link_to "編集する", edit_admin_category_path(category), :class => "btn btn-outline-secondary btn-block" %></td>
+         </tr>
+         <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
  </div>

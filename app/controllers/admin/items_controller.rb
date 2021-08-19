@@ -36,7 +36,8 @@ class Admin::ItemsController < ApplicationController
    else
      @categories = Category.all
      @sub_categories = SubCategory.all
-     render :edit
+     render :show
+     
    end
   end
 

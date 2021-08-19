@@ -11,6 +11,20 @@
     </div>
   </div>
   
+  <% if @item.liked_by?(current_customer) %>
+    <p>
+      <%= link_to item_likes_path(@item), method: :delete do %>
+        ♥<%= @item.likes.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to item_liked_path(@item), method: :post do %>
+        ♡<%= @item.likes.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+  
     <div class="col-md-6">
     <div class="row" style="margin: 30px 0 35px 0;">
       <div class="col-md-4 text-right">
@@ -73,10 +87,11 @@
 
        <% @item.posts.each do |post| %>
 
-       <%= attachment_image_tag @customer, :image, :fill, 100, 100, format: 'jpg', fallback: "user2.jpg" %>
+       <%= attachment_image_tag customer, :image, :fill, 100, 100, format: 'jpg', fallback: "user2.jpg", class: "rounded-circle" %>
        <%= post.customer.name %>
        <%= post.created_at.strftime('%Y/%m/%d') %><%= post.review %>
       <script>
+      
         $('.post-rate').raty({
           readOnly: true,
           score: function() {

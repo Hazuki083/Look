@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   root "items#top"
   resources :customers, only: [:show, :edit, :update]
   resources :items, only: [:index, :show]do
-  resources :posts, only: [:new, :create, :destroy]
+   resources :posts, only: [:new, :create, :destroy]
+   resource :likes, only: [:show, :create, :destroy]
   end
   resources :categories, only: [:index]
  end
