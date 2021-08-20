@@ -1,23 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 text-left">
-      <p><strong style="background-color: #eeeeee; font-size: 25px;">一覧</strong>（全<%= @items.count %>件）</p>
+    <div class="col-md-5 text-center">
+      <p><strong style="font-size: 25px;">一覧</strong>（全<%= @items.count %>件）</p>
     </div>
   </div>
-</div>     
   
-  <table class='table table-hover table-inverse'>
-    <tbody>
-      <% @items.each do |item| %>
-        <tr>
-          <th><%= attachment_image_tag item, :image_id, :fill, 10, 10,fallback: "no.jpg" %></th>
-          <td><%= link_to item.name, item_path(item.id), class: "text-dark" %></td>
-          <td>参考価格 <%= item.price.to_s(:delimited) %>円</td>
-          <td>評価</td>
-        </tr>
-     <% end %>
+  <div class="row">
+    <div class="col-md-8 text-center">
+      <table class='table table-hover table-inverse'>
+        <tbody>
+          <% @items.each do |item| %>
+          <tr>
+            <th><%= attachment_image_tag item, :image_id, size: '100x100', fallback: "no.jpg" %></th>
+            <td><%= link_to item.name, item_path(item.id), class: "text-dark" %></td>
+            <td>参考価格 <%= item.price.to_s(:delimited) %>円</td>
+            <td>評価</td>
+          </tr>
+         <% end %>
      <!--kaminari記述-->
      <%= paginate @items %>
-   </tbody>
-  </table>
+        </tbody>
+     </table>
+   </div>
+  </div>
 </div>

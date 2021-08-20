@@ -9,4 +9,6 @@ class Customer < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  
+ 
 end

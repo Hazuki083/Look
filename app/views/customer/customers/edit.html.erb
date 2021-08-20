@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="head-line title_h2 text-center">マイページ編集</h2>
+
+      <%= form_with model:@customer, url:customer_path, local: true ,method: :put do |f| %>
+
+      <div class="col-xs-10">
+        <div class="form-group col-xs-12">
+          <%= f.label :"名前", class: "col-sm-5 control-label" %>
+          <%= f.text_field :name, class: "name col-sm-3 form-control-static name" %>
+        </div>
+
+        <div class="form-group col-xs-12">
+          <%= f.label :"肌質", class: "col-sm-5 control-label" %>
+          <%= f.select :skin, [["乾燥肌","乾燥肌"],["普通肌","普通肌"],["脂性肌","脂性肌"],["混合肌","混合肌"]], class: "form-control" %>
+        </div>
+
+        <div class="form-group col-xs-12">
+          <%= f.label :"年代", class: "col-sm-5 control-label" %>
+          <%= f.select :age, [["10代","10代"],["20代","20代"],["30代","30代"],["40代", "40代"],["50代", "50代"],["非公開","非公開"]],class: "col-sm-4 form-control-static" %>
+        </div>
+
+        <div class="form-group col-xs-12">
+          <%= f.label :"メールアドレス", class: "col-sm-5 control-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6 form-control-static" %>
+        </div>
+
+        <div class="form-group col-xs-12">
+          <%= f.label :"プロフィール画像", class: "col-sm-5 control-label" %>
+          <%= f.attachment_field :image, placeholder: "ファイルを選択", class: "col-sm-5 control-label" %>
+        </div>
+      </div>
+
+      <div class="actions col-xs-9 col-xs-offset-3">
+        <%= f.submit "編集内容を保存する", class: "btn btn-primary save col-xs-6" %>
+         <%= link_to '退会する', class: "glyphicon glyphicon-tint btn btn-danger"%>
+      </div>
+    <% end %>
+    <div class="col-xs-12">
+      <p>
+      <%= link_to "戻る", customer_path, class: "glyphicon glyphicon-home btn btn-info" %>
+      </p>
+    </div>
+  </div>
+</div>
+</div>

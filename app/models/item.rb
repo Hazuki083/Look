@@ -7,7 +7,14 @@ class Item < ApplicationRecord
 
   has_many :posts,  dependent: :destroy
   has_many :customer, dependent: :destroy
-
+  has_many :likes, dependent: :destroy
+  
   validates :name, :introduction, :price,  presence: true
   
+   def liked_by?(customer)
+    # self.likes.where(customer_id: customer.id).exists?
+    likes.where(customer_id: customer.id).exists?
+    # liked_byで自分が含まれているかどうか判断
+    # exists 該当の値があればtrue、なければfalseを返す
+   end
 end

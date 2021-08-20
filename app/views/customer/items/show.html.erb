@@ -19,37 +19,37 @@
     </p>
     <% else %>
     <p>
-      <%= link_to item_liked_path(@item), method: :post do %>
+      <%= link_to item_likes_path(@item), method: :post do %>
         ♡<%= @item.likes.count %> いいね
       <% end %>
     </p>
   <% end %>
   
     <div class="col-md-6">
-    <div class="row" style="margin: 30px 0 35px 0;">
-      <div class="col-md-4 text-right">
-        <p>商品名</p>
+      <div class="row" style="margin: 30px 0 35px 0;">
+        <div class="col-md-4 text-right">
+          <p>商品名</p>
+        </div>
+        <div class="col-md-8 text-right">
+          <%= @item.name %>
+        </div>
       </div>
-      <div class="col-md-8 text-right">
-        <%= @item.name %>
+      <div class="row" style="margin: 30px 0 35px 0;">
+        <div class="col-md-4 text-left">
+          <p>商品説明</p>
+        </div>
+        <div class="col-md-8 text-left">
+          <%= @item.introduction %>
+        </div>
       </div>
-    </div>
-    <div class="row" style="margin: 30px 0 35px 0;">
-      <div class="col-md-4 text-left">
-        <p>商品説明</p>
+      <div class="row" style="margin: 30px 0 35px 0;">
+        <div class="col-md-4 text-left">
+          <p>カテゴリー</p>
+        </div>
+        <div class="col-md-8 text-left">
+          <%= @item.category.name %>
+        </div>
       </div>
-      <div class="col-md-8 text-left">
-        <%= @item.introduction %>
-      </div>
-    </div>
-    <div class="row" style="margin: 30px 0 35px 0;">
-      <div class="col-md-4 text-left">
-        <p>カテゴリー</p>
-      </div>
-      <div class="col-md-8 text-left">
-        <%= @item.category.name %>
-      </div>
-    </div>
     <div class="row" style="margin: 30px 0 35px 0;">
       <div class="col-md-4 text-left">
         <p>サブカテゴリー</p>
@@ -80,18 +80,24 @@
   </div>
 </div>
 
-
-     <div class="review">
-       <h1>レビューの一覧</h1>
+    <div class="review">
+       <h1>みんなのレビュー</h1>
        <p>レビュー件数：<%= @item.posts.count %></p>
-
        <% @item.posts.each do |post| %>
-
-       <%= attachment_image_tag customer, :image, :fill, 100, 100, format: 'jpg', fallback: "user2.jpg", class: "rounded-circle" %>
+       <%= attachment_image_tag post.customer, :image, :fill, 100, 100, format: 'jpg', fallback: "user2.jpg", class: "rounded-circle" %>
        <%= post.customer.name %>
+       <div class="post-rate" data-score=<%= post.rate %>></div>
        <%= post.created_at.strftime('%Y/%m/%d') %><%= post.review %>
-      <script>
-      
+       <% if @post.customer == current_customer %>
+       <div class="post-delete">
+        <%= link_to "削除", item_post_path(post.item, post), method: :delete %>
+       </div>
+       <% end %>
+       <% end %>
+    </div>
+    
+    <script>
+    // <div class="post-rate" data-score=<#%= post.rate %>></div>の箇所に表示される
         $('.post-rate').raty({
           readOnly: true,
           score: function() {
@@ -100,14 +106,4 @@
          path: '/assets/'
          });
      </script>
-     
-       <% if post.customer == current_customer %>
-       <div class="post-delete">
-        <%= link_to "削除", item_post_path(post.item, post), method: :delete %>
-     </div>
-     <% end %>
-     <% end %>
-     
-    </div>
-  </div>
 </div>
