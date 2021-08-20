@@ -1,2 +1,0 @@
-module Customer::PostsTagHelper
-end

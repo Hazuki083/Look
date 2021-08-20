@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   # namespace URL:指定のパスにしたい　ファイル構成：指定のパスにしたい
    namespace :admin do
     get 'homes/top' => 'homes#top'
+    get "searches" => "searches#search"
     resources :categories, only: [:index, :create, :edit, :update]
     resources :sub_categories, only: [:index, :create, :edit, :update]
     resources :items, only: [:new, :show, :edit, :create, :update]
+
   end
 
   devise_for :customers, controllers: {

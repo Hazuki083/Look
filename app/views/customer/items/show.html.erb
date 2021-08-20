@@ -2,29 +2,32 @@
   <div class="col-md-2 text-center" style="margin: 15px 0 15px 0;">
     <h5 style="background-color: #eeeeee;">商品詳細</h5>
   </div>
-  
+
   <div class="row">
     <div class="col-md-5  text-left" style="margin: 30px 0 35px 0;">
       <div class="post-body">
         <th><%= attachment_image_tag @item, :image_id, :fill, 10, 10, fallback: "no.jpg" %></th>
-      </div>
-    </div>
-  </div>
-  
-  <% if @item.liked_by?(current_customer) %>
+        
+        <% if @item.liked_by?(current_customer) %>
     <p>
-      <%= link_to item_likes_path(@item), method: :delete do %>
+      <%= link_to item_likes_path(item), method: :delete, remote: true do %>
         ♥<%= @item.likes.count %> いいね
       <% end %>
     </p>
     <% else %>
     <p>
-      <%= link_to item_likes_path(@item), method: :post do %>
+      <%= link_to item_likes_path(item), method: :post, remote: true do %>
         ♡<%= @item.likes.count %> いいね
       <% end %>
     </p>
   <% end %>
-  
+
+        <!--<#%= render "customer/likes/like", item: @item %>-->
+      </div>
+    </div>
+  </div>
+
+
     <div class="col-md-6">
       <div class="row" style="margin: 30px 0 35px 0;">
         <div class="col-md-4 text-right">
@@ -95,7 +98,8 @@
        <% end %>
        <% end %>
     </div>
-    
+
+<!--scriptはeach文の中に入れたら表示されない-->
     <script>
     // <div class="post-rate" data-score=<#%= post.rate %>></div>の箇所に表示される
         $('.post-rate').raty({
