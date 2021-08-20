@@ -1,5 +1,6 @@
 class Customer::ItemsController < ApplicationController
  
+ 
  def top
  end
 
@@ -13,6 +14,8 @@ class Customer::ItemsController < ApplicationController
   @post = Post.new
   @posts = @item.posts.includes(:customer)
   # includesで関連付けられているモデルをあらかじめ取得しておく。 N +1問題を解決するメソッド
+  # @customer = Customer.find_by(id: params[:id])
+  # @like = Like.where(customer_id: @customer.id)
  end
  
  def destroy
