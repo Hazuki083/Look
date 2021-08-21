@@ -7,22 +7,22 @@
     <div class="col-md-5  text-left" style="margin: 30px 0 35px 0;">
       <div class="post-body">
         <th><%= attachment_image_tag @item, :image_id, :fill, 10, 10, fallback: "no.jpg" %></th>
-        
-        <% if @item.liked_by?(current_customer) %>
-    <p>
-      <%= link_to item_likes_path(item), method: :delete, remote: true do %>
-        ♥<%= @item.likes.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to item_likes_path(item), method: :post, remote: true do %>
-        ♡<%= @item.likes.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
-
-        <!--<#%= render "customer/likes/like", item: @item %>-->
+<!--<div id="item_<%= @item.id %>">-->
+<!--    <% if @item.liked_by?(current_customer) %>-->
+<!--    <p>-->
+<!--      <%= link_to item_likes_path(@item), method: :delete, remote: true do %>-->
+<!--        ♥<%= @item.likes.count %> いいね-->
+<!--      <% end %>-->
+<!--    </p>-->
+<!--    <% else %>-->
+<!--    <p>-->
+<!--      <%= link_to item_likes_path(@item), method: :post, remote: true do %>-->
+<!--        ♡<%= @item.likes.count %> いいね-->
+<!--      <% end %>-->
+<!--    </p>-->
+<!--  <% end %>-->
+<!--</div>-->
+        <%= render "customer/likes/like", item: @item %>
       </div>
     </div>
   </div>
@@ -84,20 +84,25 @@
 </div>
 
     <div class="review">
-       <h1>みんなのレビュー</h1>
-       <p>レビュー件数：<%= @item.posts.count %></p>
-       <% @item.posts.each do |post| %>
-       <%= attachment_image_tag post.customer, :image, :fill, 100, 100, format: 'jpg', fallback: "user2.jpg", class: "rounded-circle" %>
-       <%= post.customer.name %>
-       <div class="post-rate" data-score=<%= post.rate %>></div>
-       <%= post.created_at.strftime('%Y/%m/%d') %><%= post.review %>
-       <% if @post.customer == current_customer %>
-       <div class="post-delete">
+      <h1>みんなのレビュー</h1>
+      <p>レビュー件数：<%= @item.posts.count %></p>
+
+      <% @item.posts.each do |post| %>
+      <%# post.customer %>
+      <%= attachment_image_tag @posts.find(post.id).customer, :image, :fill, 50, 50, format: 'jpg', fallback: "user2.jpg", class: "rounded-circle" %>
+      <%= post.customer.name %>
+      <!--↓ここで星評価を表示する-->
+      <div class="post-rate" data-score=<%= post.rate %>></div>
+      <%= post.created_at.strftime('%Y/%m/%d') %>
+      <%= post.review %>
+      <% if post.customer == current_customer %>
+      <div class="post-delete">
         <%= link_to "削除", item_post_path(post.item, post), method: :delete %>
-       </div>
-       <% end %>
-       <% end %>
+      </div>
+      <% end %>
+     <% end %>
     </div>
+
 
 <!--scriptはeach文の中に入れたら表示されない-->
     <script>

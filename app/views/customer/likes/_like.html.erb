@@ -1,3 +1,4 @@
+<div id="item_<%= item.id %>">
  <% if item.liked_by?(current_customer) %>
     <p>
       <%= link_to item_likes_path(item), method: :delete,remote: true do %>
@@ -11,3 +12,4 @@
       <% end %>
     </p>
   <% end %>
+</div>

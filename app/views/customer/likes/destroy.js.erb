@@ -1,1 +1,2 @@
-$("#item_<%= @item.id %> .like-btn ").html("<%= j(render 'customer/likes/like', item: @item, customer: @customer) %>");
+console.log("destroy.js");
+$("#item_<%= @item.id %>").html("<%= j(render 'customer/likes/like', item: @item, customer: @customer) %>");

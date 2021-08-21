@@ -1,6 +1,6 @@
 class Customer::ItemsController < ApplicationController
- 
- 
+
+
  def top
  end
 
@@ -12,20 +12,18 @@ class Customer::ItemsController < ApplicationController
  def show
   @item = Item.find(params[:id])
   @post = Post.new
-  @posts = @item.posts.includes(:customer)
+  @posts = Post.includes(:customer)
   # includesで関連付けられているモデルをあらかじめ取得しておく。 N +1問題を解決するメソッド
-  # @customer = Customer.find_by(id: params[:id])
-  # @like = Like.where(customer_id: @customer.id)
  end
- 
+
  def destroy
   @post = Post.find(params[:id])
  end
- 
+
  private
- 
+
  def item_params
     params.require(:item).permit(:name, :image, :introduction, :price, :category, :sub_category)
- end 
+ end
 
 end
