@@ -22,7 +22,7 @@
     <tbody>
       <% @items.each do |item| %>
         <tr>
-          <th><%= attachment_image_tag item, :image_id, size: '100x100', fallback: "no.jpg" %></th>
+          <th><%= attachment_image_tag item, :image, :fill, 100, 150, format: 'jpg', fallback: "no.jpg" %></th>
           <td><%= link_to item.name, admin_item_path(item.id), class: "text-dark" %></td>
           <td><%= item.price.to_s(:delimited) %>円</td>
           <!--to_s(:delimited)で数字を-->

@@ -4,19 +4,34 @@
       <p><strong style="font-size: 25px;">一覧</strong>（全<%= @items.count %>件）</p>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-md-8 text-center">
       <table class='table table-hover table-inverse'>
         <tbody>
           <% @items.each do |item| %>
           <tr>
-            <th><%= attachment_image_tag item, :image_id, size: '100x100', fallback: "no.jpg" %></th>
+            <th><%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpg', fallback: "no.jpg" %></th>
             <td><%= link_to item.name, item_path(item.id), class: "text-dark" %></td>
             <td>参考価格 <%= item.price.to_s(:delimited) %>円</td>
-            <td>評価</td>
+            <td>評価<div class="average-review-rating" data-score=<%= @rate_avg[item.id] %>></div></td>
           </tr>
+
          <% end %>
+
+      <script>
+         $('.average-review-rating').raty({
+          readOnly: true,
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          score: function() {
+          return $(this).attr('data-score')
+         }
+        });
+     </script>
+
+
      <!--kaminari記述-->
      <%= paginate @items %>
         </tbody>
