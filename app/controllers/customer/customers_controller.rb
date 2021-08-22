@@ -22,15 +22,6 @@ class Customer::CustomersController < ApplicationController
        render :edit
     end
   end
-  
-  def rank
-    @customers = Customer.
-              find(Item.
-                    group(:score).
-                    order('avg(score) desc').
-                    pluck(:customer_id)
-                  )
-  end
 
   private
 

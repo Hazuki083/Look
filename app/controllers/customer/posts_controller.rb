@@ -11,7 +11,7 @@ class Customer::PostsController < ApplicationController
     @item = Item.find(params[:item_id])
     @post = current_customer.posts.new(post_params)
     @post.item_id = @item.id
-    @customer = @item.customer
+    @customers = @item.customers
     if @post.save
       flash[:notice]="レビューを投稿しました"
       redirect_to controller: :items, action: :top

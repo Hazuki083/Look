@@ -3,3 +3,28 @@
     <div class="col-md-2 text-center" style="margin: 10px 0 10px 0;">
       <h3 style="background-color: #eeeeee;">topページ</h3>
       <%= link_to "カテゴリー", categories_path, class: "btn btn-outline-secondary btn-block" %>
+      <% @items.each do |item| %>
+          <tr>
+            <th><%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpg', fallback: "no.jpg" %></th>
+            <td><%= link_to item.name, item_path(item.id), class: "text-dark" %></td>
+            <td>参考価格 <%= item.price.to_s(:delimited) %>円</td>
+            <td>評価<div class="average-review-rating" data-score=<%= @rate_avg[item.id] %>></div></td>
+            <td><%= Post.where(item_id: item.id).average(:rate) %></td>
+          </tr>
+      
+     <% end %>
+     
+      <script>
+         $('.average-review-rating').raty({
+          readOnly: true,
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          score: function() {
+          return $(this).attr('data-score')
+         }
+        });
+     </script>
+    </div>
+  </div> 
+</div>
