@@ -1,29 +1,18 @@
 <div class="container">
 	<h2 class="head-line text-center">カテゴリー</h2>
 	<div class="row">
-	  <div class="col-md-3">
-      <div class="category">スキンケア</div>
-      <%= link_to "洗顔", items_path %>
-      <%= link_to "化粧水", items_path %>
-      <%= link_to "乳液", items_path %>
-      <%= link_to "美容液", items_path %>
-      <%= link_to "フェイスクリーム", items_path %>
-      <div class="col-md-8 text-left">
-      <div class="category">ヘアケア</div>
-      <%= link_to "シャンプー", items_path %>
-      <%= link_to "コンディショナー", items_path %>
-      <%= link_to "トリートメント", items_path %>
-      <%= link_to "スタイリング剤", items_path %>
-      <div class="category">メイク</div>
-      <%= link_to "下地", items_path %>
-      <%= link_to "コンシーラー", items_path %>
-      <%= link_to "パウダー", items_path %>
-      <%= link_to "アイブロウ", items_path %>
-      <%= link_to "リップ", items_path %>
-      <div class="category">ボディケア</div>
-      <%= link_to "アウトバス", items_path %>
-      <%= link_to "日焼け止め", items_path %>
-      <%= link_to "デオドランド", items_path %>
-  </div>
- </div>
+
+	 <div class="category-group">
+	   <% @categories.each do |category| %>
+	   <div class="list-group-item d-flex justify-content-between align-items-center">
+	     <%= link_to category.name, items_path(category: category.id) %>
+	   </div>
+	     <% end %>
+	     <% @sub_categories.each do |sub_category| %>
+	     <ul>
+        <%= link_to sub_category.name, items_path(sub_category: sub_category.id) %>
+      </ul>
+    <% end %>
+   </div>
+	</div>
 </div

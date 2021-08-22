@@ -1,7 +1,7 @@
 class Customer::ItemsController < ApplicationController
 
  def top
-  @items = Item.find(Post.group(:rate).order('avg(rate) desc').pluck(:item_id)).limit(10)
+  @items = Item.find(Post.group(:rate).order('avg(rate) desc').pluck(:item_id))#.limit(10)
   @rate_avg = {}
   @items.each do |item|
    rate_sum = 0
@@ -13,7 +13,14 @@ class Customer::ItemsController < ApplicationController
  end
 
  def index
-  @items = Item.all.page(params[:page]).reverse_order.per(8)
+  if params[:category] != nil
+   @items = Item.where(category_id: params[:category])
+  elsif params[:sub_category] != nil
+   @items = Item.where(sub_category_id: params[:sub_category])
+  else
+   @items = Item.all
+  end
+  @items = @items.page(params[:page]).reverse_order.per(8)
   # reverse_orderで降順
   @rate_avg = {}
   @items.each do |item|

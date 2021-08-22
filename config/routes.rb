@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   root "items#top"
   resources :customers, only: [:show, :edit, :update]
   resources :items, only: [:index, :show]do
+   member do    #IDをもたせたいためmemberを使う
+    get 'search'
+   end
    resources :posts, only: [:new, :create, :destroy]
    resource :likes, only: [:show, :create, :destroy]
   end

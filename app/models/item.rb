@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   
   validates :name, :introduction, :price,  presence: true
   
+  # いいね機能
    def liked_by?(current_customer)
     # self.likes.where(customer_id: customer.id).exists?
     likes.where(customer_id: current_customer.id).exists?
