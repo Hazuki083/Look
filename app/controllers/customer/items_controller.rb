@@ -17,6 +17,9 @@ class Customer::ItemsController < ApplicationController
    @items = Item.where(category_id: params[:category])
   elsif params[:sub_category] != nil
    @items = Item.where(sub_category_id: params[:sub_category])
+  elsif params[:customer_id].present?
+    @customer = Customer.find(params[:customer_id])
+    @items = @customer.items
   else
    @items = Item.all
   end

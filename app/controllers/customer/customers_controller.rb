@@ -3,6 +3,9 @@ class Customer::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(current_customer.id)
+    @items = @customer.items
+    likes = Like.where(customer_id: @customer.id).pluck(:item_id)
+    @like_items = Item.find(likes)
   end
 
 

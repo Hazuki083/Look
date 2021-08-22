@@ -24,11 +24,16 @@ Rails.application.routes.draw do
 
 # scope URL:指定のパスにしたい　ファイル構成：変えたくない
 # module URL:変えたくない　ファイル構成：指定のパスにしたい
+
  scope module: :customer do
   root "items#top"
-  resources :customers, only: [:show, :edit, :update]
-  resources :items, only: [:index, :show]do
-   member do    #IDをもたせたいためmemberを使う
+  resources :customers, only: [:index, :show, :edit]
+  resources :items, only: [:index, :show]
+   scope :member do
+    get :likes
+   end
+  resources :items, only: [:index, :show] do
+   scope :member do    #IDをもたせたいためmemberを使う
     get 'search'
    end
    resources :posts, only: [:new, :create, :destroy]

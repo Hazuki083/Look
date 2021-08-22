@@ -3,6 +3,6 @@
       <tr>
         <%= attachment_image_tag customer, :image, :fill, 300, 300, format: 'jpg', fallback: "user2.jpg", class: "rounded-circle" %>
       </tr>
-      <th>いいね</th>
+      <th><%= link_to "いいね", items_path(customer_id: customer.id) %></th>
     
   </table>
