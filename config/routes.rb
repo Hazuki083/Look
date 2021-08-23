@@ -8,12 +8,11 @@ Rails.application.routes.draw do
 
   # namespace URL:指定のパスにしたい　ファイル構成：指定のパスにしたい
    namespace :admin do
-    get 'homes/top' => 'homes#top'
-    get "searches" => "searches#search"
+    get "homes/top" => "homes#top"
     resources :categories, only: [:index, :create, :edit, :update]
     resources :sub_categories, only: [:index, :create, :edit, :update]
     resources :items, only: [:new, :show, :edit, :create, :update]
-
+    get "search" => "item#search", as: "item_search"
   end
 
   devise_for :customers, controllers: {
@@ -32,10 +31,8 @@ Rails.application.routes.draw do
    scope :member do
     get :likes
    end
-   get 'search' => 'items#search', as: 'item_search'
+  get 'search' => 'items#search', as: 'item_search'
   resources :items, only: [:index, :show] do
-  
-   
    resources :posts, only: [:new, :create, :destroy]
    resource :likes, only: [:create, :destroy]
   end

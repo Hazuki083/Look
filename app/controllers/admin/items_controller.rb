@@ -41,6 +41,12 @@ class Admin::ItemsController < ApplicationController
      
    end
   end
+  
+  def search
+    @content = params['search']['content']
+    @how = params['search']['how']
+    @items = Item.search_for(@content, @how).page(params[:page]).reverse_order.per(8)
+  end
 
   private
   def item_params

@@ -2,11 +2,11 @@
   <div class="card col-sm-5 mx-auto mt-5">
     <div class="card-body">
       <h4 class="mt-1 mb-3 bg-gray text-center ">ログイン</h4>
-      
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      
+
       <div class="field">
-        
+
         <%= f.label :"メールアドレス", :class => "form-label"  %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control"%>
       </div>
@@ -15,12 +15,12 @@
         <%= f.label :"パスワード", :class => "form-label"  %><br />
         <%= f.password_field :password, autocomplete: "current-password", :class => "form-control"  %>
       </div>
-      
+
       <% if devise_mapping.rememberable? %>
-      
+
       <div class="field">
         <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+        <%= f.label :"ログイン状態を維持する" %>
       </div>
      <% end %>
 
@@ -28,7 +28,7 @@
          <%= f.submit "ログイン", :class => "btn btn-outline-secondary btn-block"  %>
        </div>
      <% end %>
-     
+
       <%= render "customer/customers/shared/links" %>
     </div>
   </div>

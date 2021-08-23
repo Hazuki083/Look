@@ -7,29 +7,27 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-
 <!--カスタマーログイン後-->
         <% if customer_signed_in? %>
           <li class="nav-item">
-            <li><%= render "layouts/search" %></li>
-            <%= link_to customer_path(current_customer.id) do %>
+            <li><%= render "layouts/search_customer" %></li>
+            <li class="nav-item pl-4 "><%= link_to customer_path(current_customer.id) do %>
             <%= attachment_image_tag current_customer, :image, :fill, 60, 60, fallback: "user2.jpg", class: "rounded-circle" %>
             <% end %>
           </li>
           <li class="nav-item pl-4 "><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:'nav-link btn btn-outline-warning'%></li>
           <li><div class="input-group pl-4"></div></li>
-
 <!--管理者ログイン後-->
         <% elsif admin_signed_in? %>
+          <li><%= render "layouts/search_admin" %></li>
           <li class="nav-item"><%= link_to "商品", admin_homes_top_path, class:'nav-link btn btn-outline-warning'%></li>
           <li class="nav-item pl-4"><%= link_to "カテゴリー", admin_categories_path, class:'nav-link btn btn-outline-warning'%></li>
           <li class="nav-item pl-4"><%= link_to "サブカテゴリー", admin_sub_categories_path, class:'nav-link btn btn-outline-warning'%></li>
           <li class="nav-item pl-4"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'nav-link btn btn-outline-warning'%></li>
           <li><div class="input-group pl-4"> </div></li>
-
 <!--ログインしてない-->
         <% else %>
-          <li><%= render "layouts/search" %></li>
+          <li><%= render "layouts/search_customer" %></li>
           <li class="nav-item pl-4"><%= link_to "新規登録", new_customer_registration_path,class:'nav-link btn btn-outline-warning'%></li>
           <li class="nav-item pl-4"><%= link_to "ログイン", new_customer_session_path,class:'nav-link btn btn-outline-warning'%></li>
           <li><div class="input-group pl-4"></div></li>
