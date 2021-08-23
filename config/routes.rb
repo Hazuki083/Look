@@ -32,10 +32,10 @@ Rails.application.routes.draw do
    scope :member do
     get :likes
    end
+   get 'search' => 'items#search', as: 'item_search'
   resources :items, only: [:index, :show] do
-   scope :member do    #IDをもたせたいためmemberを使う
-    get 'search'
-   end
+  
+   
    resources :posts, only: [:new, :create, :destroy]
    resource :likes, only: [:create, :destroy]
   end
