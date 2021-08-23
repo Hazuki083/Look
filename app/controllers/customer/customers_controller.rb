@@ -4,10 +4,9 @@ class Customer::CustomersController < ApplicationController
   def show
     @customer = Customer.find(current_customer.id)
     @items = @customer.items
-    likes = Like.where(customer_id: @customer.id).pluck(:item_id)
+    likes = Like.where(customer_id: @customer.id).pluck(:item_id) #pluckはDBからデータを取り出すメソッド
     @like_items = Item.find(likes)
   end
-
 
   def edit
     @customer = Customer.find(current_customer.id)

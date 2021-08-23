@@ -17,21 +17,22 @@ class Customer::ItemsController < ApplicationController
    @items = Item.where(category_id: params[:category])
   elsif params[:sub_category] != nil
    @items = Item.where(sub_category_id: params[:sub_category])
-  elsif params[:customer_id].present?
-    @customer = Customer.find(params[:customer_id])
-    @items = @customer.items
+  elsif params[:customer_id].present? 
+    @customer = Customer.find(params[:customer_id]) #カスタマーを呼び出す
+    @items = @customer.items #カスタマーがいいねした商品の紐付け
   else
    @items = Item.all
   end
   @items = @items.page(params[:page]).reverse_order.per(8)
   # reverse_orderで降順
+  #平均の算出
   @rate_avg = {}
   @items.each do |item|
-   rate_sum = 0
+   rate_sum = 0 #基準をゼロに戻すため
    item.posts.each do |post|
     rate_sum += post.rate
    end
-   @rate_avg[item.id] = item.posts.count == 0 ? 0 : rate_sum / item.posts.count #条件演算子を使って平均値を算出
+   @rate_avg[item.id] = item.posts.count == 0 ? 0 : rate_sum / item.posts.count #条件演算子を使っている
   end
  end
 

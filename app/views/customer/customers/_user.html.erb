@@ -3,6 +3,7 @@
       <tr>
         <%= attachment_image_tag customer, :image, :fill, 300, 300, format: 'jpg', fallback: "user2.jpg", class: "rounded-circle" %>
       </tr>
-      <th><%= link_to "いいね", items_path(customer_id: customer.id) %></th>
-    
-  </table>
+      <th><%= link_to "いいね", items_path(customer_id: customer.id) %></th> 
+      <!--link_toでparamsを飛ばす方法、link_to hoge_path(key: "value")-->
+    </thead
+</table>

@@ -1,11 +1,10 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-5 text-center" style="margin: 10px 0 10px 0;">
-      <h3>商品一覧</h3>
-    </div>
+  <h2 class="head-line text-center">商品一覧</h2>
+</div>
     
-    <div class="col-md-8"></div>
-    <div class="col-md-2 text-center" style="margin: 10px 0 30px 0;">
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 text-center" style="margin: 10px 20px 30px 0;">
       <%= link_to "", new_admin_item_path, class: "fas fa-pencil-alt fa-2x" %>
     </div>
   </div>
@@ -25,7 +24,7 @@
           <th><%= attachment_image_tag item, :image, :fill, 100, 150, format: 'jpg', fallback: "no.jpg" %></th>
           <td><%= link_to item.name, admin_item_path(item.id), class: "text-dark" %></td>
           <td><%= item.price.to_s(:delimited) %>円</td>
-          <!--to_s(:delimited)で数字を-->
+          <!--to_s(:delimited)で数字に区切り-->
         </tr>
      <% end %>
      <!--kaminari記述-->

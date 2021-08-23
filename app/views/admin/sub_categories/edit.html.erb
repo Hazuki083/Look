@@ -1,18 +1,14 @@
-<div class="contener">
-   <div class="row">
-     <div class="col-md-2 text-center" style="margin: 30px 0 30px 200px;">
-       <h4 style="background-color: #eeeeee;" >サブカテゴリー編集</h4>
-     </div>
-   </div>
-   <!--urlにはしたいアクションのpathを記述-->
+<div class="container">
+  <h2 class="head-line text-center">サブカテゴリー編集</h2>
+</div>
+   <!--urlにはしたいアクションのpathを-->
    <%= form_with model:@sub_category, url:admin_sub_category_path(@sub_category), local:true do |f| %>
-    <div class="row">
+    <div class="row" style="margin: 50px 0 30px 0;">
        <div class="col-md-1"></div>
-       <div class="col-md-1">サブカテゴリー</div>
+       <div class="col-md-2">サブカテゴリー</div>
        <div class="col-2"><%= f.text_field :name  %></div>
        <div class="actions">
            <%= f.submit "変更を保存", :class => "btn btn-outline-secondary btn-block" %>
        </div>
     </div>
    <% end %>
-</div>

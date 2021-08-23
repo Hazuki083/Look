@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2 text-center" style="margin: 10px 0 10px 0;">
-      <h3 style="background-color: #eeeeee;">topページ</h3>
+      <h3>人気ランキング</h3>
       <%= link_to "カテゴリー", categories_path, class: "btn btn-outline-secondary btn-block" %>
       <% @items.each do |item| %>
           <tr>
@@ -11,7 +11,6 @@
             <td>評価<div class="average-review-rating" data-score=<%= @rate_avg[item.id] %>></div></td>
             <td><%= Post.where(item_id: item.id).average(:rate) %></td>
           </tr>
-      
      <% end %>
      
       <script>

@@ -8,6 +8,6 @@ class Customer < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :items, through: :likes
+  has_many :items, through: :likes  #throughを使ってモデル同士のアソシエーション（多：多）
 
 end
