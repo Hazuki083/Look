@@ -4,12 +4,13 @@
     <%#= form_with (model:[@item,@post], local: true) do |f| %>
     <%= form_with(model: [@item, @post], local: true) do |f| %>
           <div class="form-group">
-            <%= f.label :image, "画像を追加" %>
+            <%= f.label :image, "画像を追加" %><br/>
             <%= f.attachment_field :image %>
           </div>
           <div class="form-group">
-            <%= f.label :review, "レビュー" %>
-            <%= f.text_field :review, size: "35" %>
+            <%= f.label :review, "レビュー" %><br/>
+            <%= f.text_area :review, placeholder:"商品をレビューしてみましょう！
+            例）つけ心地、おすすめの使い方"%>
           </div>
 
           <!--評価機能はjavascript-->
@@ -24,8 +25,8 @@
                 scoreName: 'post[rate]'   // 登録するモデル名［カラム名］
              });
             </script>
-          </div>
-          <%= f.submit "投稿", class:"btn btn-secondary" %>
+          </div><br/>
+          <%= f.submit "投稿", class:"btn btn-secondary w-200px" %>
         <% end %>
   </div>
 </div>
