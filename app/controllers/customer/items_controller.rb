@@ -1,7 +1,7 @@
 class Customer::ItemsController < ApplicationController
 
  def top
-  @items = Item.find(Post.group(:rate).order('avg(rate) desc').pluck(:item_id))#.limit(10)
+  @items = Item.includes(:posts).find(Post.group(:rate).order('avg(rate) desc').pluck(:item_id))#.limit(10)
   @rate_avg = {}
   @items.each do |item|
    rate_sum = 0
@@ -49,17 +49,21 @@ class Customer::ItemsController < ApplicationController
 
 
  def search
+#  @item = Item.find(params[:item_id])
+  if params['search'] == nil
+   params['search'] = {'content' => "", 'how' => "match"}
+  end
   @content = params['search']['content']
   @how = params['search']['how']
   @items = Item.search_for(@content, @how).page(params[:page]).reverse_order.per(8)
   # reverse_orderで降順
   #平均の算出
   @rate_avg = {}
-   @items.each do |item|
+  @items.each do |item|
    rate_sum = 0 #基準をゼロに戻すため
    item.posts.each do |post|
     rate_sum += post.rate
-   end
+  end
    @rate_avg[item.id] = item.posts.count == 0 ? 0 : rate_sum / item.posts.count #条件演算子を使っている
   end
   render :index

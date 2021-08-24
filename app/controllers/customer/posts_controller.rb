@@ -22,6 +22,9 @@ class Customer::PostsController < ApplicationController
      @post = Post.find_by(id: params[:id], item_id: params[:item_id]).destroy
      @item = Item.find(params[:item_id])
       flash[:notice]="レビューを削除しました"
+      redirect_to controller: :items, action: :top
+      
+     
    end
 
 

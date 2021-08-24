@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   # namespace URL:指定のパスにしたい　ファイル構成：指定のパスにしたい
    namespace :admin do
     get "homes/top" => "homes#top"
+    get "search" => "items#search", as: "item_search"
     resources :categories, only: [:index, :create, :edit, :update]
     resources :sub_categories, only: [:index, :create, :edit, :update]
     resources :items, only: [:new, :show, :edit, :create, :update]
-    get "search" => "item#search", as: "item_search"
   end
 
   devise_for :customers, controllers: {
@@ -26,14 +26,13 @@ Rails.application.routes.draw do
 
  scope module: :customer do
   root "items#top"
-  resources :customers, only: [:index, :show, :edit]
+  resources :customers, only: [:show, :edit, :update]
   put "/customers/:id/out" => "customers#out", as: 'customers_out'
-  resources :items, only: [:index, :show]
+  get 'items/search' => 'items#search', as: 'items_search'
+  resources :items, only: [:index, :show, :destroy] do
    scope :member do
     get :likes
    end
-  get 'search' => 'items#search', as: 'item_search'
-  resources :items, only: [:index, :show] do
    resources :posts, only: [:new, :create, :destroy]
    resource :likes, only: [:create, :destroy]
   end

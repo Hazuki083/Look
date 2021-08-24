@@ -38,14 +38,15 @@ class Admin::ItemsController < ApplicationController
      @categories = Category.all
      @sub_categories = SubCategory.all
      render :show
-     
+
    end
   end
-  
+
   def search
     @content = params['search']['content']
     @how = params['search']['how']
     @items = Item.search_for(@content, @how).page(params[:page]).reverse_order.per(8)
+    render "/admin/homes/top"
   end
 
   private

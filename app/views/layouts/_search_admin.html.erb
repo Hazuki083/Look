@@ -1,5 +1,9 @@
-<%= form_tag(admin_item_search_path, method: :get) do %>
-<%= text_field_tag 'search[content]', '', class: '' %>
-<%= select_tag 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }) %>
-<%= submit_tag '検索', class: 'btn btn-outline-info' %>
-<% end %>
+  <div class="form-inline">
+      <div style="padding: 5px 40px 5px 5px;">
+        <%= form_tag(admin_item_search_path, method: :get) do %>
+        <%= text_field_tag 'search[content]', "", placeholder:"商品を検索", :class => "form-control" %>
+        <%= select_tag 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical" }), :class => "form-control form-control-sm" %>
+        <%= submit_tag '検索', class: 'btn btn-outline-info' %>
+        <% end %>
+    </div>
+  </div>

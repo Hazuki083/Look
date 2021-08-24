@@ -10,7 +10,7 @@
 <!--カスタマーログイン後-->
         <% if customer_signed_in? %>
           <li class="nav-item">
-            <li><%= render "layouts/search_customer" %></li>
+            <li><%= render "layouts/search_customer", item: @item %></li>
             <li class="nav-item pl-4 "><%= link_to customer_path(current_customer.id) do %>
             <%= attachment_image_tag current_customer, :image, :fill, 60, 60, fallback: "user2.jpg", class: "rounded-circle" %>
             <% end %>
