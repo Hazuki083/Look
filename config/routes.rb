@@ -27,6 +27,7 @@ Rails.application.routes.draw do
  scope module: :customer do
   root "items#top"
   resources :customers, only: [:index, :show, :edit]
+  put "/customers/:id/out" => "customers#out", as: 'customers_out'
   resources :items, only: [:index, :show]
    scope :member do
     get :likes

@@ -1,7 +1,9 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-2 text-center" style="margin: 10px 0 10px 0;">
-      <h3>人気ランキング</h3>
+	<h2 class="head-line text-center">人気ランキング</h2>
+	<div class="row">
+	  <div class="text-center col-md-5">
+
+
       <%= link_to "カテゴリー", categories_path, class: "btn btn-outline-secondary btn-block" %>
       <% @items.each do |item| %>
           <tr>

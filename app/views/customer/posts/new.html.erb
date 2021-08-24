@@ -1,19 +1,17 @@
 <div class="container">
-  <div class="row">
-    <h1>レビュー投稿</h1>
-
+	<h2 class="head-line text-center">レビューの投稿</h2>
+	  <div class="text-center" style="margin: 50px 0 0 0;">
     <%#= form_with (model:[@item,@post], local: true) do |f| %>
     <%= form_with(model: [@item, @post], local: true) do |f| %>
           <div class="form-group">
             <%= f.label :image, "画像を追加" %>
             <%= f.attachment_field :image %>
           </div>
-
           <div class="form-group">
             <%= f.label :review, "レビュー" %>
-            <%= f.text_field :review %>
+            <%= f.text_field :review, size: "35" %>
           </div>
-          
+
           <!--評価機能はjavascript-->
           <div id="rating-form">
             <label>評価：</label>

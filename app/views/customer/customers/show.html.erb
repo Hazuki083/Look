@@ -1,13 +1,12 @@
 <div class="container">
 	<h2 class="head-line text-center">マイページ</h2>
 	<div class="row">
-	  <div class="col-md-3">
+	  <div class="text-center col-md-5">
 	  	<%= render 'customer/customers/user', customer: @customer %>
 		</div>
 
-		<div class="row-mt-3">
-		  <div class="text-light col-md-12 offset-md-10">
-			  <table class="table table-bordered table-condensed" >
+			<div class="row" style="margin: 50px 0 0 80px;">
+			  <table class="table table-bordered" >
 				  <tbody>
 					  <tr>
 						  <td class="info col-xs-2">名前</td>
@@ -24,10 +23,16 @@
 					  <tr>
 						  <td class="info">メールアドレス</td>
 						  <td class="text-left"><%= @customer.email %></td>
-						  <%= link_to " 編集する", edit_customer_path, class: "glyphicon glyphicon-pencil btn btn-success" %></p>
-					  </tr>
-				</tbody>
-			</table>
+						</tr>
+				   </tbody>
+			   </table>
+			   <div class="btn-group mr-3">
+			   	<ul><%= link_to " 編集", edit_customer_path, class: "btn btn-outline-success" %>
+						  <% if customer_signed_in? && @customer.id == current_customer.id %>
+              <%= link_to "退会", customers_out_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+              <% end %>
+          </ul>
+         </div>
 		 </div>
 		</div>
 	</div>

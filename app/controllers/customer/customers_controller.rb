@@ -24,7 +24,16 @@ class Customer::CustomersController < ApplicationController
        render :edit
     end
   end
-
+  
+  def out
+    @customer = Customer.find(params[:id])
+    @customer.update(is_deleted: true) #defaultはfalse
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
+  
+  
   private
 
   def customer_params
