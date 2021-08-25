@@ -12,7 +12,7 @@
           <li class="nav-item">
             <li><%= render "layouts/search_customer" %></li>
             <li class="nav-item pl-4 "><%= link_to customer_path(current_customer.id) do %>
-            <%= attachment_image_tag current_customer, :image, :fill, 60, 60, fallback: "user2.jpg", class: "rounded-circle" %>
+            <%= attachment_image_tag current_customer, :image, :fill, 60, 60, fallback: "user.jpg", class: "rounded-circle" %>
             <% end %>
           </li>
           <li class="nav-item pl-4 "><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:'nav-link btn btn-outline-warning'%></li>

@@ -4,6 +4,7 @@
     
    <!--urlにはしたいアクションのpath-->
    <%= form_with model:@category, url:admin_category_path(@category), local:true do |f| %>
+    <%= render 'layouts/error_message', model: f.object %>
      <div class="row" style="margin: 50px 0 30px 0;">
        <div class="col-md-1"></div>
        <div class="col-md-1">カテゴリー</div>

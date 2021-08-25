@@ -25,8 +25,6 @@ class Customer::PostsController < ApplicationController
      @item = Item.find(params[:item_id])
       flash[:notice]="レビューを削除しました"
       redirect_to controller: :items, action: :top
-      
-     
    end
 
 
