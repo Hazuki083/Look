@@ -1,0 +1,37 @@
+<div class="container">
+  <h2 class="head-line text-center">みんなのレビュー</h2>
+    <div class="review">
+      <tbody>
+        <p>レビュー件数：<%= item.posts.count %></p>
+  
+        <% item.posts.each do |post| %>
+        <%# post.customer %>
+        <%= attachment_image_tag posts.find(post.id).customer, :image, :fill, 50, 50, format: 'jpg', fallback: "user2.jpg", class: "rounded-circle" %>
+        <%= post.customer.name %>
+        <!--↓ここで星評価を表示する-->
+        <div class="post-rate" data-score=<%= post.rate %>></div>
+        <%= post.created_at.strftime('%Y/%m/%d') %>
+        <%= post.review %>
+        <% if post.customer == current_customer %>
+        <div class="post-delete">
+          <%= link_to "削除", item_post_path(post.item, post), method: :delete %>
+        </div>
+        <% end %>
+       <% end %>
+    </div>
+
+    
+    <!--scriptはeach文の中に入れたら表示されない-->
+        <script>
+        // <div class="post-rate" data-score=<#%= post.rate %>></div>の箇所に表示される
+            $('.post-rate').raty({
+              readOnly: true,
+              score: function() {
+              return $(this).attr('data-score');
+             },
+             path: '/assets/'
+             });
+         </script>
+      </tbody>
+     
+</div>

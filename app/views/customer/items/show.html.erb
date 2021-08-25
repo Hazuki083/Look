@@ -1,24 +1,22 @@
 <div class="container">
-  <div class="col-md-2 text-center" style="margin: 15px 0 15px 0;">
-    <h5 style="background-color: #eeeeee;">商品詳細</h5>
-  </div>
+  <h2 class="head-line text-center">商品詳細</h2>
+</div>
 
+<div class="container">
   <div class="row">
-    <div class="col-md-5  text-left" style="margin: 30px 0 35px 0;">
+    <div class="col-md-5 text-center" style="margin: 30px 30px 0 0;">
       <div class="post-body">
-        <th><%= attachment_image_tag @item, :image, :fill, 10, 10, format: 'jpg', fallback: "no.jpg" %></th>
+        <th><%= attachment_image_tag @item, :image, :fill, 100, 150, format: 'jpg', fallback: "no.jpg" %></th>
         <%= render "customer/likes/like", item: @item %>
       </div>
     </div>
-  </div>
-
 
     <div class="col-md-6">
       <div class="row" style="margin: 30px 0 35px 0;">
-        <div class="col-md-4 text-right">
+        <div class="col-md-4 text-left">
           <p>商品名</p>
         </div>
-        <div class="col-md-8 text-right">
+        <div class="col-md-8 text-left">
           <%= @item.name %>
         </div>
       </div>
@@ -68,36 +66,39 @@
   </div>
 </div>
 
+<div class="container">
+  <h2 class="text-center" style="margin: 30px 0 0 0;">みんなのレビュー</h2>
     <div class="review">
-      <h1>みんなのレビュー</h1>
-      <p>レビュー件数：<%= @item.posts.count %></p>
+      <tbody>
+        <p>レビュー件数：<%= @item.posts.count %></p>
 
-      <% @item.posts.each do |post| %>
-      <%# post.customer %>
-      <%= attachment_image_tag @posts.find(post.id).customer, :image, :fill, 50, 50, format: 'jpg', fallback: "user2.jpg", class: "rounded-circle" %>
-      <%= post.customer.name %>
-      <!--↓ここで星評価を表示する-->
-      <div class="post-rate" data-score=<%= post.rate %>></div>
-      <%= post.created_at.strftime('%Y/%m/%d') %>
-      <%= post.review %>
-      <% if post.customer == current_customer %>
-      <div class="post-delete">
-        <%= link_to "削除", item_post_path(post.item, post), method: :delete %>
-      </div>
-      <% end %>
-     <% end %>
+        <% @item.posts.each do |post| %>
+        <%# post.customer %>
+        <%= attachment_image_tag @posts.find(post.id).customer, :image, :fill, 50, 50, format: 'jpg', fallback: "user2.jpg", class: "rounded-circle" %>
+        <%= post.customer.name %>
+        <!--↓ここで星評価を表示する-->
+        <div class="post-rate" data-score=<%= post.rate %>></div>
+        <%= post.created_at.strftime('%Y/%m/%d') %>
+        <%= post.review %>
+        <% if post.customer == current_customer %>
+        <div class="post-delete">
+          <%= link_to "削除", item_post_path(post.item, post), method: :delete %>
+        </div>
+        <% end %>
+       <% end %>
     </div>
 
 
-<!--scriptはeach文の中に入れたら表示されない-->
-    <script>
-    // <div class="post-rate" data-score=<#%= post.rate %>></div>の箇所に表示される
-        $('.post-rate').raty({
-          readOnly: true,
-          score: function() {
-          return $(this).attr('data-score');
-         },
-         path: '/assets/'
-         });
-     </script>
+    <!--scriptはeach文の中に入れたら表示されない-->
+        <script>
+        // <div class="post-rate" data-score=<#%= post.rate %>></div>の箇所に表示される
+            $('.post-rate').raty({
+              readOnly: true,
+              score: function() {
+              return $(this).attr('data-score');
+             },
+             path: '/assets/'
+             });
+         </script>
+      </tbody>
 </div>

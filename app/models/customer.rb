@@ -3,7 +3,10 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  
+  validates :name, presence: true
+  validates :email, presence: true
+  
   attachment :image
 
   has_many :posts, dependent: :destroy
@@ -11,4 +14,9 @@ class Customer < ApplicationRecord
   has_many :items, through: :likes  #throughを使ってモデル同士のアソシエーション（多：多）
  
  enum age: { '10代': 10, '20代': 20, '30代': 30, '40代': 40, '50代': 50, '非公開': 0 }
+ 
+ def active_for_authentication?
+    super && (self.is_deleted == false)
+ end
+ 
 end

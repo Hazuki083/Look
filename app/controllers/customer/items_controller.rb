@@ -23,7 +23,7 @@ class Customer::ItemsController < ApplicationController
   else
    @items = Item.all
   end
-  @items = @items.page(params[:page]).reverse_order.per(8)
+  @items = @items.page(params[:page]).reverse_order.per(10)
   # reverse_orderで降順
   #平均の算出
   @rate_avg = {}
@@ -39,7 +39,7 @@ class Customer::ItemsController < ApplicationController
  def show
   @item = Item.find(params[:id])
   @post = Post.new
-  @posts = Post.includes(:customer)
+  @posts = Post.includes(:customer).page(params[:page]).reverse_order.per(10)
   # includesで関連付けられているモデルをあらかじめ取得しておく。 N +1問題を解決するメソッド
  end
 
@@ -55,7 +55,7 @@ class Customer::ItemsController < ApplicationController
   end
   @content = params['search']['content']
   @how = params['search']['how']
-  @items = Item.search_for(@content, @how).page(params[:page]).reverse_order.per(8)
+  @items = Item.search_for(@content, @how).page(params[:page]).reverse_order.per(10)
   # reverse_orderで降順
   #平均の算出
   @rate_avg = {}
