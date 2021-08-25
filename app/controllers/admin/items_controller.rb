@@ -38,7 +38,6 @@ class Admin::ItemsController < ApplicationController
      @categories = Category.all
      @sub_categories = SubCategory.all
      render :show
-
    end
   end
 

@@ -1,3 +1,4 @@
+<%= flash[:notice] %>
 <div class="container">
   <div class="row">
     <div class="col-md-3 text-center" style="margin: 15px 0 15px 0;">
@@ -8,13 +9,13 @@
     <div class="row">
       <div class="col-md-8 ml-md-auto">
         <%= form_with model: @item, url: admin_items_path, method: :post, local:true do |f| %>
+        <%= render 'layouts/error_message', model: f.object %>
         <table>
           <tr>
             <th><%= f.label :image, "商品画像", class: "mr-5" %></th>
             <td>
               <div class="form-group">
                  <%= f.attachment_field :image, class: "image" %>
-                
               </div>
             </td>
           </tr>

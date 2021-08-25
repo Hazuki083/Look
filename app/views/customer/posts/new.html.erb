@@ -1,9 +1,9 @@
 <div class="container">
 	<h2 class="head-line text-center">レビューの投稿</h2>
-	<%= render 'layouts/error_messages', model: f.object %>
 	  <div class="text-center" style="margin: 50px 0 0 0;">
-    
+
     <%= form_with(model: [@item, @post], local: true) do |f| %>
+    <%= render 'layouts/error_message', model: f.object %>
           <!--<div class="form-group">-->
           <!--  <#%= f.label :image, "画像を追加" %><br/>-->
           <!--  <#%= f.attachment_field :image %>-->

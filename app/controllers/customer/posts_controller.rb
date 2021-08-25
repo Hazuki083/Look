@@ -15,6 +15,8 @@ class Customer::PostsController < ApplicationController
     if @post.save
       flash[:notice]="レビューを投稿しました"
       redirect_to controller: :items, action: :top
+    else
+     render :new 
     end
   end
 
