@@ -21,7 +21,7 @@ class Customer::CustomersController < ApplicationController
        flash[:notice] = "マイページが更新されました"
        redirect_to customer_path
     else
-       render :show
+       render :edit and return
     end
   end
   

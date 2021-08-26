@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    attributes:
+      customer: 
+        name: 名前
+        age: 年齢
+        skin: 肌質
+        email: メールアドレス
+        password: パスワード
+        blank: "が入力されていません。"
+      item: 
+        price: 価格
+      post:
+        review: レビュー
+        rate: 星
+    errors:
+     messages:

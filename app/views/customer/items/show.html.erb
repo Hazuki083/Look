@@ -70,7 +70,7 @@
     <div class="review">
       <tbody>
         <p>レビュー件数：<%= @item.posts.count %></p>
-        <% @item.posts.each do |post| %>
+        <% @item.posts.reverse.each do |post| %>
         <%# post.customer %>
         <%= attachment_image_tag @posts.find(post.id).customer, :image, :fill, 50, 50, format: 'jpg', fallback: "user.jpg", class: "rounded-circle" %>
         <%= post.customer.name %>
@@ -84,7 +84,7 @@
         </div>
         <% end %>
        <% end %>
-      
+
 
 
     <!--scriptはeach文の中に入れたら表示されない-->

@@ -16,7 +16,7 @@ class Customer::PostsController < ApplicationController
       flash[:notice]="レビューを投稿しました"
       redirect_to controller: :items, action: :top
     else
-     render :new 
+      render :new 
     end
   end
 
@@ -31,7 +31,7 @@ class Customer::PostsController < ApplicationController
   private
 
   def post_params
-  params.require(:post).permit(:review, :image, :rate)
+  params.require(:post).permit(:review, :rate)
   end
 
 end

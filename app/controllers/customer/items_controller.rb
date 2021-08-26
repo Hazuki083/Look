@@ -23,7 +23,7 @@ class Customer::ItemsController < ApplicationController
   else
    @items = Item.all
   end
-  @items = @items.page(params[:page]).reverse_order.per(10)
+  @items = @items.includes(:posts).page(params[:page]).reverse_order.per(10)
   # reverse_orderで降順
   #平均の算出
   @rate_avg = {}
@@ -72,7 +72,7 @@ class Customer::ItemsController < ApplicationController
  private
 
  def item_params
-    params.require(:item).permit(:name, :image, :introduction, :price, :category, :sub_category)
+    params.require(:item).permit(:name, :image, :introduction, :price, :category, :sub_category, :rate)
  end
 
 end

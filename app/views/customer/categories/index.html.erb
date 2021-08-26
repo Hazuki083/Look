@@ -1,5 +1,7 @@
 <div class="container">
 	<h2 class="text-center">カテゴリー</h2>
+
+
 	 <div class="row">
 			<% @categories.each do |category| %>
 			 <div class="card-deck">
@@ -8,18 +10,17 @@
 			      <div class="card-title">
 			        <h5><%= link_to category.name, items_path(category: category.id) %></h5>
 			        <% end %>
-			        
+
 			         <div class="content">
 			         	<% @sub_categories.each do |sub_category| %>
                  <div class="categories-by"><%= link_to sub_category.name, items_path(sub_category: sub_category.id) %></div>
-                 
                  <% end %>
 			      </div>
 			     </div>
 			   </div>
 			 </div>
 			</div>
-			      
+
 			      <div class="card-text">
 			        <p>This is a card sample.</p>
 			      </div>
@@ -37,7 +38,6 @@
 		  </div>
 		</div>
  </div>
- 
-	 
-	  
-	 
+
+
+
