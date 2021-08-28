@@ -3,7 +3,7 @@
   <p>（全<%= @items.count %>件）</p>
 </div>
 
-   <div class="container">     
+   <div class="container">
       <table class='table table-hover table-inverse'>
         <tbody>
           <% @items.each do |item| %>
@@ -17,6 +17,7 @@
          <% end %>
 
           <script>
+             $('.average-review-rating').empty();
              $('.average-review-rating').raty({
               readOnly: true,
               starOn: "<%= asset_path('star-on.png') %>",

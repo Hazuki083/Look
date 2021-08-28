@@ -2,13 +2,13 @@
   <!--論理演算子。２つとも真でないとだめ-->
  <% if customer_signed_in? && item.liked_by?(current_customer) %>
     <p>
-      <%= link_to item_likes_path(item), method: :delete, remote: true do %>
+      <%= link_to "/items/#{item.id}/likes", method: :delete, remote: true do %>
         ♥<%= item.likes.count %>
       <% end %>
     </p>
     <% else %>
     <p>
-      <%= link_to item_likes_path(item), method: :post, remote: true do %>
+      <%= link_to "/items/#{item.id}/likes", method: :post, remote: true do %>
         ♡<%= item.likes.count %>
       <% end %>
     </p>

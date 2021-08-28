@@ -90,6 +90,7 @@
     <!--scriptはeach文の中に入れたら表示されない-->
         <script>
         // <div class="post-rate" data-score=<#%= post.rate %>></div>の箇所に表示される
+            $('.post-rate').empty();
             $('.post-rate').raty({
               readOnly: true,
               score: function() {
