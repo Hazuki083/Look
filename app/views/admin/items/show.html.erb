@@ -1,67 +1,67 @@
 <%= flash[:notice] %>
-<div class="container">
-  <div class="col-md-2 text-center" style="margin: 15px 0 15px 0;">
-    <h3>商品詳細</h3>
-  </div>
-  
-  <div class="row">
-    <div class="col-md-5  text-center" style="margin: 30px 0 35px 0;">
-      <div class="post-body">
-        <%= attachment_image_tag @item, :image, :fill, 100, 150, format: 'jpg', fallback: "no.jpg" %>
-      </div>
+  <div class="container">
+    <div class="col-md-2 text-center" style="margin: 15px 0 15px 0;">
+      <h3>商品詳細</h3>
     </div>
-    
-    <div class="col-md-6">
-    <div class="row" style="margin: 30px 0 35px 0;">
-      <div class="col-md-4 text-left">
-        <p>商品名</p>
+
+    <div class="row">
+      <div class="col-md-5  text-center" style="margin: 30px 0 35px 0;">
+        <div class="post-body">
+          <%= attachment_image_tag @item, :image, :fill, 100, 150, format: 'jpg' , fallback: "no.jpg" %>
+        </div>
       </div>
-      <div class="col-md-8 text-left">
-        <%= @item.name %>
-      </div>
-    </div>
-    <div class="row" style="margin: 30px 0 35px 0;">
-      <div class="col-md-4 text-left">
-        <p>商品説明</p>
-      </div>
-      <div class="col-md-8 text-left">
-        <%= @item.introduction %>
-      </div>
-    </div>
-    <div class="row" style="margin: 30px 0 35px 0;">
-      <div class="col-md-4 text-left">
-        <p>カテゴリー</p>
-      </div>
-      <div class="col-md-8 text-left">
-        <%= @item.category.name %>
-      </div>
-    </div>
-    <div class="row" style="margin: 30px 0 35px 0;">
-      <div class="col-md-4 text-left">
-        <p>サブカテゴリー</p>
-      </div>
-      <div class="col-md-8 text-left">
-        <%= @item.sub_category.name %>
-      </div>
-    </div>
-    <div class="row" style="margin: 30px 0 35px 0;">
-      <div class="col-md-4 text-left">
-        <p>参考価格</p>
-      </div>
-      <div class="col-md-8 text-left">
-        <%= @item.price.to_s(:delimited) %>円
-        <br>
-      </div>
-    </div>
-    <div class="row" style="font-size: 13px; margin-top: 10px;">
-      <div class="col-md-3 text-center">
-      </div>
-      <div class="col-md-4 text-center">
-        <div class="actions">
-          <%= link_to "編集する", edit_admin_item_path(@item), :class => "btn btn-outline-secondary btn-block" %>
+
+      <div class="col-md-6">
+        <div class="row" style="margin: 30px 0 35px 0;">
+          <div class="col-md-4 text-left">
+            <p>商品名</p>
+          </div>
+          <div class="col-md-8 text-left">
+            <%= @item.name %>
+          </div>
+        </div>
+        <div class="row" style="margin: 30px 0 35px 0;">
+          <div class="col-md-4 text-left">
+            <p>商品説明</p>
+          </div>
+          <div class="col-md-8 text-left">
+            <%= @item.introduction %>
+          </div>
+        </div>
+        <div class="row" style="margin: 30px 0 35px 0;">
+          <div class="col-md-4 text-left">
+            <p>カテゴリー</p>
+          </div>
+          <div class="col-md-8 text-left">
+            <%= @item.category.name %>
+          </div>
+        </div>
+        <div class="row" style="margin: 30px 0 35px 0;">
+          <div class="col-md-4 text-left">
+            <p>サブカテゴリー</p>
+          </div>
+          <div class="col-md-8 text-left">
+            <%= @item.sub_category.name %>
+          </div>
+        </div>
+        <div class="row" style="margin: 30px 0 35px 0;">
+          <div class="col-md-4 text-left">
+            <p>参考価格</p>
+          </div>
+          <div class="col-md-8 text-left">
+            <%= @item.price.to_s(:delimited) %>円
+              <br>
+          </div>
+        </div>
+        <div class="row" style="font-size: 13px; margin-top: 10px;">
+          <div class="col-md-3 text-center">
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="actions">
+              <%= link_to "編集する" , edit_admin_item_path(@item), :class=> "btn btn-outline-secondary btn-block" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    </div>
   </div>
-</div>

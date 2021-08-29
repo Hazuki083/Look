@@ -3,36 +3,43 @@
 </div>
 
 <div class="container">
-   <!--サブカテゴリー追加フォーム-->
-    <%= form_with url:admin_sub_categories_path, model:@sub_category, local:true do |f| %>
-    
+  <!--サブカテゴリー追加フォーム-->
+  <%= form_with url:admin_sub_categories_path, model:@sub_category, local:true do |f| %>
     <!--rowにform入れると縦に並ぶ-->
     <div class="row" style="margin: 20px 0 35px 0;">
       <div class="col-md-2 text-center">
-        <h6>サブカテゴリー名</h6>
+        <%= f.label :"カテゴリー", class: "mr-5" %>
+          <div class="form-group">
+            <%= f.collection_select :category_id, @categories, :id, :name, {prompt: "選択してください" }%>
+          </div>
       </div>
-     <div class="col-md-4">
-     <%= f.text_field :name, :size=>"30×5" %>
-     </div>
-     <div class="col-md-3">
-     <%= f.submit "新規登録", :class => "btn btn-outline-secondary btn-block" %>
-     </div>
-    <% end %>
-   </div>
-   <!--サブカテゴリの一覧-->
-   <div class="row">
-   <div class="col-lg-4">
-    <table class="table border-dark">
-          <div class="text-center" style="padding-top: 20px; height: 55px; background-color: #eeeeee;">サブカテゴリー</div>
-     <tbody>
-      <% @sub_categories.each do |sub_category| %>
-       <tr>
-        <td class="sub_category_name"><%= link_to sub_category.name %></td>
-        <td><%= link_to "編集する", edit_admin_sub_category_path(sub_category), :class => "btn btn-outline-secondary btn-block" %></td>
-       </tr>
+      <div class="col-md-4">
+        <%= f.text_field :name, placeholder:"サブカテゴリーを入力", :size=>"30×5" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.submit "新規登録" , :class=> "btn btn-outline-secondary btn-block" %>
+      </div>
       <% end %>
-     </tbody>
-    </table>
-   </div>
-  </div>
- </div>
+    </div>
+    <!--サブカテゴリの一覧-->
+    <div class="row">
+      <div class="col-lg-4">
+        <table class="table border-dark">
+          <div class="text-center" style="padding-top: 20px; height: 55px; background-color: #eeeeee;">サブカテゴリー</div>
+          <tbody>
+            <% @sub_categories.each do |sub_category| %>
+              <tr>
+                <td class="sub_category_name">
+                  <%= link_to sub_category.name %>
+                </td>
+                <td>
+                  <%= link_to "編集する" , edit_admin_sub_category_path(sub_category), :class=> "btn btn-outline-secondary
+                    btn-block" %>
+                </td>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
