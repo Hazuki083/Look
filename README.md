@@ -1,24 +1,43 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Look
 
-Things you may want to cover:
+## サイト概要
+メンズコスメの口コミ投稿サイト
 
-* Ruby version
+### サイトテーマ
+男性に気軽に見てほしいサイト
 
-* System dependencies
+### テーマを選んだ理由
+2019年に発表されたデータに、メンズコスメは2015年比で全体で109%成長、特に洗顔クリームや化粧水などのスキンケア製品を中心とした「基礎化粧品」ジャンルが115%成長するなど飛躍をしたというデータがあります。また新型コロナウイルス感染症の影響により、メンズコスメの市場の拡大は加速していると推測されます。さらに昨今では欧米で、ジェンダーレスを打ち出すメンズビューティーブランドも台頭しており、日本よりもメンズコスメの製品展開が広く、種類も多くされています。今までコスメは女性というイメージが強かったかもしれませんが、これからは違います。日本だけではなく世界中で拡大しようとしているこの市場に着目しました。
 
-* Configuration
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+### ターゲットユーザ
+２０代〜５０代の働く男性 
+次のような悩みを抱える人をイメージしました。
 
-* Services (job queues, cache servers, search engines, etc.)
+①オンライン会議が増えたことにより自分の顔をよく見るようになったり、見られるようになった
+②マスクによって荒れた肌を治したい 
+③お手入れしたいけど何を使ったら良いかわからない
 
-* Deployment instructions
 
-* ...
+
+### 主な利用シーン
+気になる商品があるけど購入を迷っているときや
+自分が使ってみた商品が良かったから誰かに教えてあげたいときなどです。 
+
+
+## 設計書
+ER図　https://app.diagrams.net/#G1yojb9338j-rLu0jhsgUCJGn-fubkqO84
+
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1-2NZZyEMbW3AH7KLAgXT_2RAhfM3VIwn0mL3W1N9HmU/edit#gid=0
+
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
