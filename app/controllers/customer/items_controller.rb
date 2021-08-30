@@ -33,16 +33,6 @@ class Customer::ItemsController < ApplicationController
   @post = Post.find(params[:id])
  end
 
- # def like
- #  @like = Like.new
- #  @likes.customer_id = current_customer.id?
- #  #保存処理
- #  if @like.save
- #    flash[:notice]="商品をいいねしました"
- #    reder :show
- #  end
- # end
-
 
  def search
 #  @item = Item.find(params[:item_id])

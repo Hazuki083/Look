@@ -7,7 +7,8 @@
 		
 		<div style="margin: 50px 0 0 50px;">
       <%= form_with model:@customer, url:customer_path, local: true ,method: :put do |f| %>
-       <%= render 'layouts/error_message', model: f.object %>
+      <!--f.objectは|f|の下に入れる-->
+       <%= render 'layouts/error_message', model: f.object %>  
         <div class="form-group col-xs-12 ">
           <%= f.label :"名前", class: "col-sm-5 control-label" %>
           <%= f.text_field :name, class: "name col-sm-3 form-control-static name" %>
@@ -23,7 +24,6 @@
           <%= f.select :skin, [["乾燥肌","乾燥肌"],["普通肌","普通肌"],["脂性肌","脂性肌"],["混合肌","混合肌"]], class: "form-control" %>
         </div>
 
-      
         <div class="form-group col-xs-12">
           <%= f.label :"メールアドレス", class: "col-sm-5 control-label" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6 form-control-static" %>

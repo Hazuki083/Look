@@ -17,7 +17,8 @@
          <% end %>
 
           <script>
-             $('.average-review-rating').empty();
+             $('.average-review-rating').empty(); 
+            // .empty();を書くことによりブラウザバックで星が増えるのを止めてくれる。
              $('.average-review-rating').raty({
               readOnly: true,
               starOn: "<%= asset_path('star-on.png') %>",
