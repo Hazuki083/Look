@@ -13,7 +13,6 @@
             <td>参考価格 <%= item.price.to_s(:delimited) %>円</td>
             <td>評価<div class="average-review-rating" data-score=<%= @rate_avg[item.id] %>></div></td>
           </tr>
-
          <% end %>
 
           <script>
