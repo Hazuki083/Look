@@ -35,7 +35,6 @@ class Customer::ItemsController < ApplicationController
 
 
  def search
-#  @item = Item.find(params[:item_id])
   if params['search'] == nil
    params['search'] = {'content' => "", 'how' => "match"}
   end
@@ -70,8 +69,5 @@ class Customer::ItemsController < ApplicationController
    params.require(:item).permit(:name, :image, :introduction, :price, :category, :sub_category, :rate)
  end
 
- def likes_params
-  params.require(:like).permit(:item_id, :cutomer_id)
- end
 
 end
