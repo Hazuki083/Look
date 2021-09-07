@@ -66,7 +66,7 @@ class Customer::ItemsController < ApplicationController
  end
 
  def item_params
-   params.require(:item).permit(:name, :image, :introduction, :price, :category, :sub_category, :rate)
+   params.require(:item).permit(:name, :image, :skin, :age, :introduction, :price, :category, :sub_category, :rate)
  end
 
 

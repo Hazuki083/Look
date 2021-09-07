@@ -71,9 +71,10 @@
       <tbody>
         <p>レビュー件数：<%= @item.posts.count %></p>
         <% @item.posts.reverse.each do |post| %>
-        <%# post.customer %>
         <%= attachment_image_tag @posts.find(post.id).customer, :image, :fill, 50, 50, format: 'jpg', fallback: "user.jpg", class: "rounded-circle" %>
         <%= post.customer.name %>
+        <%= post.customer.age %>
+        <%= post.customer.skin %>
         <!--↓ここで星評価を表示する-->
         <div class="post-rate" data-score=<%= post.rate %>></div>
         <%= post.created_at.strftime('%Y/%m/%d') %>
