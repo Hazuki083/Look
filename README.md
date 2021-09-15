@@ -28,7 +28,7 @@
 
 
 ## 設計書
-ER図　https://app.diagrams.net/#G1yojb9338j-rLu0jhsgUCJGn-fubkqO84
+ER図、システム構成図　https://app.diagrams.net/#G1yojb9338j-rLu0jhsgUCJGn-fubkqO84
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1-2NZZyEMbW3AH7KLAgXT_2RAhfM3VIwn0mL3W1N9HmU/edit#gid=0
