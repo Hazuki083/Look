@@ -5,7 +5,7 @@ RSpec.describe 'Postモデルのテスト', type: :model do
      # factoriesで作成したダミーデータを使用
     let(:customer) { FactoryBot.create(:customer) }
     let!(:post) { build(:post, customer_id: customer.id) }
-     # インスタンス変数の代わりにletを使う
+     # let=インスタンス変数の代わりに使う
      # test_postを作成し、空欄での登録ができるか確認する
     subject { test_post.valid? }
     let(:test_post) { post }
